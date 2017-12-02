@@ -59,7 +59,7 @@ function calcTime(city, offset) {
 	wkday = dayWeek[nd.getDay()][1];
 	
     // return time as a string
-    return "Dining locations open as of " + wkday + ", " +  hour + ":" + pad(nd.getMinutes()) + " " + daySec + " | " + shortTime;
+    return "Dining locations open as of " + wkday + ", " +  hour + ":" + pad(nd.getMinutes()) + " " + daySec;
 }
 
 function findOpen(weekday) {
