@@ -107,8 +107,8 @@ function findOpen(weekday) {
 		residential = [["Ridgeway Commons (Breakfast)", -1, -1], ["Ridgeway Commons (Brunch)", 1000, 1330], ["Ridgeway Commons (Lite Lunch)", -1, -1], 
 							["Ridgeway Commons (Dinner)", 1700, 1830], ["Ridgeway Commons (Late Night)", 2030, 2200],
 						
-						["Viking Commons (Breakfast)", 700, 1100], ["Viking Commons (Lunch)", 1100, 1330], ["Viking Commons (Lite Lunch)", 1330, 1700], 
-							["Viking Commons (Dinner)", 1700, 1900], ["Viking Commons (Late Night)", 2030, 2200],
+						["Viking Commons (Breakfast)", -1, -1], ["Viking Commons (Brunch)", 1000, 1330], ["Viking Commons (Lite Lunch)", -1, -1], 
+							["Viking Commons (Dinner)", 1700, 1830], ["Viking Commons (Late Night)", 2030, 2200],
 						
 						["Fairhaven Commons (Breakfast)", -1, -1], ["Fairhaven Commons (Brunch)", 1000, 1330], ["Fairhaven Commons (Lite Lunch)", -1, -1], 
 							["Fairhaven Commons (Dinner)", 1700, 1830], ["Fairhaven Commons (Late Night)", 2030, 2200]];
@@ -122,8 +122,8 @@ function findOpen(weekday) {
 		residential = [["Ridgeway Commons (Breakfast)", -1, -1], ["Ridgeway Commons (Brunch)", 1000, 1330], ["Ridgeway Commons (Lite Lunch)", -1, -1], 
 							["Ridgeway Commons (Dinner)", 1700, 1830], ["Ridgeway Commons (Late Night)", 2130, 2300],
 						
-						["Viking Commons (Breakfast)", 700, 1100], ["Viking Commons (Lunch)", 1100, 1330], ["Viking Commons (Lite Lunch)", 1330, 1700], 
-							["Viking Commons (Dinner)", 1700, 1900], ["Viking Commons (Late Night)", 2100, 2230],
+						["Viking Commons (Breakfast)", -1, -1], ["Viking Commons (Brunch)", 1000, 1330], ["Viking Commons (Lite Lunch)", -1, -1], 
+							["Viking Commons (Dinner)", 1700, 1830], ["Viking Commons (Late Night)", 2100, 2230],
 						
 						["Fairhaven Commons (Breakfast)", -1, -1], ["Fairhaven Commons (Brunch)", 1000, 1330], ["Fairhaven Commons (Lite Lunch)", -1, -1], 
 							["Fairhaven Commons (Dinner)", 1700, 1830], ["Fairhaven Commons (Late Night)", 2130, 2300]];
