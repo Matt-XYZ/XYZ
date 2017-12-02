@@ -55,10 +55,8 @@ function calcTime(city, offset) {
 	var dayWeek = [[0, "Sunday"], [1, "Monday"], [2, "Tuesday"], [3, "Wednesday"], [4, "Thursday"], [5, "Friday"], [6, "Saturday"]];
 
 	shortTime = Number(fullHour.toString() + pad(nd.getMinutes()).toString());
-	shortTime = 700;
 
-	//wkday = dayWeek[nd.getDay()][1];
-	wkday = "Friday";
+	wkday = dayWeek[nd.getDay()][1];
 	
     // return time as a string
     return "Dining locations open as of " + wkday + ", " +  hour + ":" + pad(nd.getMinutes()) + " " + daySec + " | " + shortTime;
