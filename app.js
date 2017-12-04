@@ -146,7 +146,6 @@ function findOpen(weekday) {
 					["Miller Market", -1, -1], ["Zoe's Bookside Bagels", 1200, 2300], ["Rock's Edge Café", -1, -1],["Atrium POD Market", -1, -1], 
 					["Atrium Starbucks", -1, -1], ["Atrium Topios", -1, -1], ["Atrium Subway", -1, -1], ["BT Station", -1, -1], ["The Haven", 1800, 2300]];			
 	}
-	//printOpen(residential);
 	printOpen(locations);
 	
 }
@@ -190,27 +189,22 @@ function printOpen(list) {
 
 		opennow.sort(function (a, b) {
 			return a[1].toString().localeCompare(b[1].toString());
-		});
-
-		//opennow.sort(function(a, b) {
-			//return a[1]>b[1];
-		//});
-		
+		});		
 
 		document.getElementById("output").innerHTML += opennow[index][0];		
 	}
 
 	
 	for (var index = 0; index < comingup.length; index++) {
-		var comingupAB = comingup.sort(function (a, b) {
-			return a.toString().toLowerCase().localeCompare(b.toString().toLowerCase());
+		comingup.sort(function (a, b) {
+			return b[0].toString().localeCompare(a[0].toString());
 		});
 		
-		var comingupSorted = comingupAB.sort(function (a, b) {
-			return a[1]>b[1];
+		comingup.sort(function (a, b) {
+			return a[1].toString().localeCompare(b[1].toString());
 		});
 		
-		document.getElementById("output2").innerHTML += comingupSorted[index][0];
+		document.getElementById("output2").innerHTML += comingup[index][0];
 		
 		
 	}
