@@ -1,6 +1,8 @@
 var shortTime;
 var wkday;
 var output;
+var opennow = [];
+var comingup = [];
 window.onload = function() {
 
 	windowOnload();
@@ -11,6 +13,15 @@ function windowOnload() {
 	var timeDisplay = document.getElementById("timeDisplay");
 	timeDisplay.innerHTML = calcTime('Bellingham', '+8');
 	findOpen(wkday);
+
+	if (opennow.length < 1) {
+		document.getElementById("output").innerHTML += "<p><i>Nothing right now</i></p>";
+	}
+
+	if (comingup.length < 1) {
+		document.getElementById("output2").innerHTML += "<p><i>Nothing in the next 2 hours</i></p>";
+	}
+	
 }
 
 function pad(num) {
@@ -61,19 +72,15 @@ function calcTime(city, offset) {
 	var dayWeek = [[0, "Sunday"], [1, "Monday"], [2, "Tuesday"], [3, "Wednesday"], [4, "Thursday"], [5, "Friday"], [6, "Saturday"]];
 
 	shortTime = Number(fullHour.toString() + pad(nd.getMinutes()).toString());
-	
+	shortTime = 700;
 
 	wkday = dayWeek[nd.getDay()][1];
 	
     // return time as a string
-    return "Dining locations open as of " + wkday + ", " +  toTwelveHr(nd.getHours()) + ":" + pad(nd.getMinutes()) + " " + AMPM(fullHour);
+    return "WWU Dining locations open as of " + wkday + ", " +  toTwelveHr(nd.getHours()) + ":" + pad(nd.getMinutes()) + " " + AMPM(fullHour);
 }
 
 function findOpen(weekday) {
-
-	//var ridgewayCommons = ["Ridgeway Commons (Breakfast)", "Ridgeway Commons (Lunch)", "Ridgeway Commons (Lite Lunch)", "Ridgeway Commons (Dinner)", "Ridgeway Commons (Late Night)"];
-	//var vikingCommons = ["Viking Commons (Breakfast)", "Viking Commons (Lunch)", "Viking Commons (Lite Lunch)", "Viking Commons (Dinner)", "Viking Commons (Late Night)"];
-	//var fairhavenCommons = ["Fairhaven Commons (Breakfast)", "Fairhaven Commons (Lunch)", "Fairhaven Commons (Lite Lunch)", "Fairhaven Commons (Dinner)", "Fairhaven Commons (Late Night)"];
 
 	var locations = [];
 	var residential = [];
@@ -167,10 +174,6 @@ function convertToTime(value) {
 
 
 function printOpen(list) { 
-
-	var opennow = [];
-	var comingup = [];
-
 	for (var i = 0; i < list.length; i++) {		
 		if (shortTime >= list[i][1] && shortTime < list[i][2]) {
 			opennow.push(["<p>" + list[i][0] + "<span>Closes at " + convertToTime(list[i][2]) + "</span></p>", [list[i][2]]]);
@@ -188,31 +191,22 @@ function printOpen(list) {
 		var opennowSorted = opennowAB.sort(function (a, b) {
 			return a[1]>b[1];
 		});
-		
-		if (opennowSorted.length < 1) {
-			document.getElementById("output").innerHTML += "<p>Nothing yet</p>";		
-		}
-		else {
-			document.getElementById("output").innerHTML += opennowSorted[index][0];
-		}
-		
+
+		document.getElementById("output").innerHTML += opennowSorted[index][0];		
 	}
+
 	
 	for (var index = 0; index < comingup.length; index++) {
 		var comingupAB = comingup.sort(function (a, b) {
-			return a.toString().localeCompare(b.toString());
+			return a.toString().toLowerCase().localeCompare(b.toString().toLowerCase());
 		});
 		
 		var comingupSorted = comingupAB.sort(function (a, b) {
 			return a[1]>b[1];
 		});
 		
-		if (comingupSorted.length < 1) {
-			document.getElementById("output2").innerHTML += "<p>Nothing yet</p>";	
-		}
-		else {
-			document.getElementById("output2").innerHTML += comingupSorted[index][0];
-		}
+		document.getElementById("output2").innerHTML += comingupSorted[index][0];
+		
 		
 	}
 
