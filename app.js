@@ -7,10 +7,10 @@ window.onload = function() {
 }
 function windowOnload() {
 	document.getElementById("output").innerHTML = "<h3><u>Open Locations</u></h3><br />";
-	document.getElementById("output2").innerHTML = "<h3><u>Opening in the next 30 min</u></h3><br />";
+	document.getElementById("output2").innerHTML = "<h3><u>Coming up</u></h3><br />";
 	var timeDisplay = document.getElementById("timeDisplay");
 	timeDisplay.innerHTML = calcTime('Bellingham', '+8');
-	findOpen(wkday);
+	findOpen("Monday");
 }
 
 function pad(num) {
@@ -24,6 +24,23 @@ function fourpad(num) {
 	return s;
 }
 
+function toTwelveHr(hr) {
+	if (hr > 12) {
+		return hr - 12;
+	} 
+	else if (hr === 0) {
+	   return 12;
+	}
+	else return hr;
+}
+
+function AMPM(hr) {
+	if (hr <= 11 || hr == 24)
+		return "AM";
+	else {
+		return "PM";
+	}
+}
 
 function calcTime(city, offset) {
     // create Date object for current location
@@ -38,28 +55,18 @@ function calcTime(city, offset) {
     // using supplied offset
     var nd = new Date(utc + (3600000*offset));
 
-	var hour = nd.getHours();
-	if (hour > 12) {
-		hour -= 12;
-	} else if (hour === 0) {
-	   hour = 12;
-	}
+
 	fullHour = pad(nd.getHours());
-	var daySec;
-	if (fullHour <= 11 || fullHour == 24)
-		daySec = "AM";
-	else {
-		daySec = "PM";
-	}
 
 	var dayWeek = [[0, "Sunday"], [1, "Monday"], [2, "Tuesday"], [3, "Wednesday"], [4, "Thursday"], [5, "Friday"], [6, "Saturday"]];
 
 	shortTime = Number(fullHour.toString() + pad(nd.getMinutes()).toString());
+	
 
 	wkday = dayWeek[nd.getDay()][1];
 	
     // return time as a string
-    return "Dining locations open as of " + wkday + ", " +  hour + ":" + pad(nd.getMinutes()) + " " + daySec;
+    return "Dining locations open as of " + wkday + ", " +  toTwelveHr(nd.getHours()) + ":" + pad(nd.getMinutes()) + " " + AMPM(fullHour);
 }
 
 function findOpen(weekday) {
@@ -137,29 +144,56 @@ function findOpen(weekday) {
 	
 }
 
+
+function addTime(current, min) {
+	var firstTwo = Number(fourpad(current.toString()).split("")[0] + fourpad(current.toString()).split("")[1]);
+	var lastTwo = Number(fourpad(current.toString()).split("")[2] + fourpad(current.toString()).split("")[3]);
+	
+	var d = new Date("Sun Jan 1 2000 " + firstTwo + ":" + lastTwo + ":00");
+		
+	d.setMinutes(d.getMinutes() + min);
+		
+	return Number((d.getHours().toString()) + (pad(d.getMinutes()).toString()));
+}
+
+function convertToTime(value) {
+	var firstTwo = Number(fourpad(value.toString()).split("")[0] + fourpad(value.toString()).split("")[1]);
+	var lastTwo = Number(fourpad(value.toString()).split("")[2] + fourpad(value.toString()).split("")[3]);
+	
+	var d = new Date("Sun Jan 1 2000 " + firstTwo + ":" + lastTwo + ":00");
+
+	return (toTwelveHr(d.getHours())).toString() + ":" + pad(lastTwo.toString()) + " " + AMPM(firstTwo);
+}
+
+
 function printOpen(list) { 
 
-	for (var i = 0; i < list.length; i++) {
+	var opennow = [];
+	var comingup = [];
 
-		var shortTimeString = shortTime.toString(); // "630"
-		var firstTwo = fourpad(shortTimeString).split("")[0] + fourpad(shortTimeString).split("")[1] // 06
-		var lastTwo = fourpad(shortTimeString).split("")[2] + fourpad(shortTimeString).split("")[3] // 30
-		var firstTwoInt = Number(firstTwo); // first two as int
-		var lastTwoInt = Number(lastTwo); // last two as int
-
-		var d = new Date("Sun Jan 1 2000 " + firstTwoInt + ":" + lastTwoInt + ":00");
-		
-		d.setMinutes(d.getMinutes() + 31);
-		
-		adjusted = Number((d.getHours().toString()) + (pad(d.getMinutes()).toString()));
-		
+	for (var i = 0; i < list.length; i++) {		
 		if (shortTime >= list[i][1] && shortTime < list[i][2]) {
-			document.getElementById("output").innerHTML += "<p>" + list[i][0] + "</p>";
+			opennow.push(["<p>" + list[i][0] + "<span>Closes at " + convertToTime(list[i][2]) + "</span></p>", [list[i][2]]]);
 		}
 
-		else if (shortTime < list[i][1] && adjusted > list[i][1]) {
-			document.getElementById("output2").innerHTML += "<p>" + list[i][0] + "</p>";
+		else if (shortTime < list[i][1] && addTime(shortTime, 120) > list[i][1]) {
+			comingup.push(["<p>" + list[i][0] + "<span>Opens at " + convertToTime(list[i][1]) + "</span></p>", [list[i][1]]]);
 		}
+	}
+	for (var index = 0; index < opennow.length; index++) {
+		var opennowSorted = opennow.sort(function (a, b) {
+			return a[1]>b[1];
+		});
+		
+		document.getElementById("output").innerHTML += opennowSorted[index][0];
+	}
+	
+	for (var index = 0; index < comingup.length; index++) {
+		var comingupSorted = comingup.sort(function (a, b) {
+			return a[1]>b[1];
+		});
+		
+		document.getElementById("output2").innerHTML += comingupSorted[index][0];
 	}
 
 }

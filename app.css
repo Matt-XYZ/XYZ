@@ -34,8 +34,13 @@ h1 {
     display: inline-block;
     text-align: center;
 }
+span {
+	display: block;
+	font-size: 0.6em;
+	color: gray;
+	padding-top: 0.1em;
+}
 #output, #output2 {
-    /**font-size: 1.5em;**/
     display: inline-block;
     vertical-align: top;
     width: 35%;
@@ -75,8 +80,11 @@ h1 {
 
 @media (max-width: 1200px) {
     div#body {
-        width: 100% !important;
+        width: 99% !important;
     }
+	footer {
+		width: 99% !important;
+	}
 }
 @media (max-width: 900px) {
     #output, #output2 {
