@@ -30,6 +30,11 @@ footer {
     padding: 1em;
 }
 
+#loader, #loader2 {
+    width: 65px;
+    height: 65px;
+}
+
 h1 {
     display: inline-block;
     text-align: center;

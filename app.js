@@ -7,21 +7,28 @@ window.onload = function() {
 	windowOnload();
 }
 function windowOnload() {
+	opennow = [];
+	comingup = [];
 	
-	
-	document.getElementById("output").innerHTML = "<h3><u>Open Locations</u></h3><br />";
-	document.getElementById("output2").innerHTML = "<h3><u>Coming up</u></h3><br />";
 	var timeDisplay = document.getElementById("timeDisplay");
 	timeDisplay.innerHTML = calcTime('Bellingham', '+8');
-	findOpen(wkday);
 
-	if (opennow.length < 1) {
-		document.getElementById("output").innerHTML += "<p><i>Nothing right now</i></p>";
-	}
+	document.getElementById("output").innerHTML = "<h3><u>Open Locations</u></h3><br /><img id='loader' src='spinner.gif' />";
+	document.getElementById("output2").innerHTML = "<h3><u>Coming up</u></h3><br /><img id='loader2' src='spinner.gif' />";
 
-	if (comingup.length < 1) {
-		document.getElementById("output2").innerHTML += "<p><i>Nothing in the next 2 hours</i></p>";
-	}
+	setTimeout(function() {
+		document.getElementById("loader").style.display = "none";
+		document.getElementById("loader2").style.display = "none";
+		findOpen(wkday);
+	
+		if (opennow.length < 1) {
+			document.getElementById("output").innerHTML += "<p><i>Nothing right now</i></p>";
+		}
+	
+		if (comingup.length < 1) {
+			document.getElementById("output2").innerHTML += "<p><i>Nothing in the next 2 hours</i></p>";
+		}
+	}, 1500);	
 	
 }
 
