@@ -104,7 +104,7 @@ function findOpen(weekday) {
 							["Fairhaven Commons (Dinner)", 1700, 1900], ["Fairhaven Commons (Late Night)", 2130, 2300],
 		
 
-					["Atrium POD Market", 730, 1800], ["Atrium Starbucks", 730, 1800], ["Atrium Subway", 730, 1700], ["Atrium Topios", 1030, 1700], ["BT Station", 1100, 2300], 
+					["Atrium POD Market", 730, 1800], ["Atrium Starbucks", 730, 1800], ["Atrium Subway", 730, 1700], ["Atrium Topio's", 1030, 1700], ["BT Station", 1100, 2300], 
 					["Miller Market", 730, 1800], ["Rock's Edge Cafe", 730, 2000], ["The Haven", 1000, 2300], ["The Underground", 900, 2200], ["VU Cafe", 730, 1900], 
 					["VU Market", 730, 1900], ["VU Panda Express", 1030, 1900], ["VU Subway", 730, 1900], ["Zoe's Bookside Bagels", 730, 2300]]; 
 	}
@@ -121,7 +121,7 @@ function findOpen(weekday) {
 
 					["VU Cafe", 730, 1900], ["VU Market", 730, 1900], ["VU Subway", 730, 1900], ["VU Panda Express", 1030, 1900], ["The Underground", 900, 2000], 
 					["Miller Market", 730, 1700], ["Zoe's Bookside Bagels", 730, 1700], ["Rock's Edge Cafe", 730, 1700],["Atrium POD Market", 730, 1630], 
-					["Atrium Starbucks", 730, 1650], ["Atrium Topios", 1030, 1430], ["Atrium Subway", 730, 1430], ["BT Station", 1100, 1700], ["The Haven", 1000, 1700]];	
+					["Atrium Starbucks", 730, 1650], ["Atrium Topio's", 1030, 1430], ["Atrium Subway", 730, 1430], ["BT Station", 1100, 1700], ["The Haven", 1000, 1700]];	
 	}
 
 	else if (weekday == "Saturday") {
@@ -136,7 +136,7 @@ function findOpen(weekday) {
 
 					["VU Cafe", 900, 1300], ["VU Market", 1100, 1900], ["VU Subway", 1100, 1900], ["VU Panda Express", -1, -1], ["The Underground", -1, -1], 
 					["Miller Market", -1, -1], ["Zoe's Bookside Bagels", 1100, 1700], ["Rock's Edge Cafe", -1, -1],["Atrium POD Market", -1, -1], 
-					["Atrium Starbucks", -1, -1], ["Atrium Topios", -1, -1], ["Atrium Subway", -1, -1], ["BT Station", -1, -1], ["The Haven", 1400, 2000]];				
+					["Atrium Starbucks", -1, -1], ["Atrium Topio's", -1, -1], ["Atrium Subway", -1, -1], ["BT Station", -1, -1], ["The Haven", 1400, 2000]];				
 	}
 
 	else if (weekday == "Sunday") {
@@ -151,7 +151,7 @@ function findOpen(weekday) {
 
 					["VU Café", -1, -1], ["VU Market", 1100, 1900], ["VU Subway", 1100, 1900], ["VU Panda Express", -1, -1], ["The Underground", -1, -1], 
 					["Miller Market", -1, -1], ["Zoe's Bookside Bagels", 1200, 2300], ["Rock's Edge Café", -1, -1],["Atrium POD Market", -1, -1], 
-					["Atrium Starbucks", -1, -1], ["Atrium Topios", -1, -1], ["Atrium Subway", -1, -1], ["BT Station", -1, -1], ["The Haven", 1800, 2300]];			
+					["Atrium Starbucks", -1, -1], ["Atrium Topio's", -1, -1], ["Atrium Subway", -1, -1], ["BT Station", -1, -1], ["The Haven", 1800, 2300]];			
 	}
 	printOpen(locations);
 	
