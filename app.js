@@ -4,10 +4,11 @@ var output;
 var opennow = [];
 var comingup = [];
 window.onload = function() {
-
 	windowOnload();
 }
 function windowOnload() {
+	
+	
 	document.getElementById("output").innerHTML = "<h3><u>Open Locations</u></h3><br />";
 	document.getElementById("output2").innerHTML = "<h3><u>Coming up</u></h3><br />";
 	var timeDisplay = document.getElementById("timeDisplay");
@@ -86,66 +87,66 @@ function findOpen(weekday) {
 	
 
 	if (weekday == "Monday" || weekday == "Tuesday" || weekday == "Wednesday" || weekday == "Thursday") {
-		residential = [["Ridgeway Commons (Breakfast)", 700, 1100], ["Ridgeway Commons (Lunch)", 1100, 1330], ["Ridgeway Commons (Lite Lunch)", 1330, 1700], 
+		locations = [["Ridgeway Commons (Breakfast)", 700, 1100], ["Ridgeway Commons (Lunch)", 1100, 1330], ["Ridgeway Commons (Lite Lunch)", 1330, 1700], 
 							["Ridgeway Commons (Dinner)", 1700, 1900], ["Ridgeway Commons (Late Night)", 2130, 2300],
 						
 						["Viking Commons (Breakfast)", 700, 1100], ["Viking Commons (Lunch)", 1100, 1330], ["Viking Commons (Lite Lunch)", 1330, 1700], 
 							["Viking Commons (Dinner)", 1700, 1900], ["Viking Commons (Late Night)", 2100, 2230],
 						
 						["Fairhaven Commons (Breakfast)", 700, 1100], ["Fairhaven Commons (Lunch)", 1100, 1330], ["Fairhaven Commons (Lite Lunch)", 1330, 1700], 
-							["Fairhaven Commons (Dinner)", 1700, 1900], ["Fairhaven Commons (Late Night)", 2130, 2300]];
+							["Fairhaven Commons (Dinner)", 1700, 1900], ["Fairhaven Commons (Late Night)", 2130, 2300],
 		
 
-		locations = [["VU Cafe", 730, 1900], ["VU Market", 730, 1900], ["VU Subway", 730, 1900], ["VU Panda Express", 1030, 1900], ["The Underground", 900, 2200], 
-					["Miller Market", 730, 1800], ["Zoe's Bookside Bagels", 730, 2300], ["Rock's Edge Cafe", 730, 2000],["Atrium POD Market", 730, 1800], 
-					["Atrium Starbucks", 730, 1800], ["Atrium Topios", 1030, 1700], ["Atrium Subway", 730, 1700], ["BT Station", 1100, 2300], ["The Haven", 1000, 2300]];
+					["Atrium POD Market", 730, 1800], ["Atrium Starbucks", 730, 1800], ["Atrium Subway", 730, 1700], ["Atrium Topios", 1030, 1700], ["BT Station", 1100, 2300], 
+					["Miller Market", 730, 1800], ["Rock's Edge Cafe", 730, 2000], ["The Haven", 1000, 2300], ["The Underground", 900, 2200], ["VU Cafe", 730, 1900], 
+					["VU Market", 730, 1900], ["VU Panda Express", 1030, 1900], ["VU Subway", 730, 1900], ["Zoe's Bookside Bagels", 730, 2300]]; 
 	}
 
 	else if (weekday == "Friday") {
-		residential = [["Ridgeway Commons (Breakfast)", 700, 1100], ["Ridgeway Commons (Lunch)", 1100, 1330], ["Ridgeway Commons (Lite Lunch)", 1330, 1700], 
+		locations = [["Ridgeway Commons (Breakfast)", 700, 1100], ["Ridgeway Commons (Lunch)", 1100, 1330], ["Ridgeway Commons (Lite Lunch)", 1330, 1700], 
 							["Ridgeway Commons (Dinner)", 1700, 1830], ["Ridgeway Commons (Late Night)", 2030, 2200],
 						
 						["Viking Commons (Breakfast)", 700, 1100], ["Viking Commons (Lunch)", 1100, 1330], ["Viking Commons (Lite Lunch)", 1330, 1700], 
 							["Viking Commons (Dinner)", 1700, 1900], ["Viking Commons (Late Night)", 2030, 2200],
 						
 						["Fairhaven Commons (Breakfast)", 700, 1100], ["Fairhaven Commons (Lunch)", 1100, 1330], ["Fairhaven Commons (Lite Lunch)", 1330, 1700], 
-							["Fairhaven Commons (Dinner)", 1700, 1830], ["Fairhaven Commons (Late Night)", 2030, 2200]];
+							["Fairhaven Commons (Dinner)", 1700, 1830], ["Fairhaven Commons (Late Night)", 2030, 2200],
 
-		locations = [["VU Cafe", 730, 1900], ["VU Market", 730, 1900], ["VU Subway", 730, 1900], ["VU Panda Express", 1030, 1900], ["The Underground", 900, 2000], 
-					["Miller Market", 730, 1700], ["Zoe's Bookside Bagels", 730, 1700], ["Rock's Edge Cafe", 730, 1700],["Atrium POD Market", 730, 1650], 
+					["VU Cafe", 730, 1900], ["VU Market", 730, 1900], ["VU Subway", 730, 1900], ["VU Panda Express", 1030, 1900], ["The Underground", 900, 2000], 
+					["Miller Market", 730, 1700], ["Zoe's Bookside Bagels", 730, 1700], ["Rock's Edge Cafe", 730, 1700],["Atrium POD Market", 730, 1630], 
 					["Atrium Starbucks", 730, 1650], ["Atrium Topios", 1030, 1430], ["Atrium Subway", 730, 1430], ["BT Station", 1100, 1700], ["The Haven", 1000, 1700]];	
 	}
 
 	else if (weekday == "Saturday") {
-		residential = [["Ridgeway Commons (Breakfast)", -1, -1], ["Ridgeway Commons (Brunch)", 1000, 1330], ["Ridgeway Commons (Lite Lunch)", -1, -1], 
+		locations = [["Ridgeway Commons (Breakfast)", -1, -1], ["Ridgeway Commons (Brunch)", 1000, 1330], ["Ridgeway Commons (Lite Lunch)", -1, -1], 
 							["Ridgeway Commons (Dinner)", 1700, 1830], ["Ridgeway Commons (Late Night)", 2030, 2200],
 						
 						["Viking Commons (Breakfast)", -1, -1], ["Viking Commons (Brunch)", 1000, 1330], ["Viking Commons (Lite Lunch)", -1, -1], 
 							["Viking Commons (Dinner)", 1700, 1830], ["Viking Commons (Late Night)", 2030, 2200],
 						
 						["Fairhaven Commons (Breakfast)", -1, -1], ["Fairhaven Commons (Brunch)", 1000, 1330], ["Fairhaven Commons (Lite Lunch)", -1, -1], 
-							["Fairhaven Commons (Dinner)", 1700, 1830], ["Fairhaven Commons (Late Night)", 2030, 2200]];
+							["Fairhaven Commons (Dinner)", 1700, 1830], ["Fairhaven Commons (Late Night)", 2030, 2200],
 
-		locations = [["VU Cafe", 900, 1300], ["VU Market", 1100, 1900], ["VU Subway", 1100, 1900], ["VU Panda Express", -1, -1], ["The Underground", -1, -1], 
+					["VU Cafe", 900, 1300], ["VU Market", 1100, 1900], ["VU Subway", 1100, 1900], ["VU Panda Express", -1, -1], ["The Underground", -1, -1], 
 					["Miller Market", -1, -1], ["Zoe's Bookside Bagels", 1100, 1700], ["Rock's Edge Cafe", -1, -1],["Atrium POD Market", -1, -1], 
 					["Atrium Starbucks", -1, -1], ["Atrium Topios", -1, -1], ["Atrium Subway", -1, -1], ["BT Station", -1, -1], ["The Haven", 1400, 2000]];				
 	}
 
 	else if (weekday == "Sunday") {
-		residential = [["Ridgeway Commons (Breakfast)", -1, -1], ["Ridgeway Commons (Brunch)", 1000, 1330], ["Ridgeway Commons (Lite Lunch)", -1, -1], 
+		locations = [["Ridgeway Commons (Breakfast)", -1, -1], ["Ridgeway Commons (Brunch)", 1000, 1330], ["Ridgeway Commons (Lite Lunch)", -1, -1], 
 							["Ridgeway Commons (Dinner)", 1700, 1830], ["Ridgeway Commons (Late Night)", 2130, 2300],
 						
 						["Viking Commons (Breakfast)", -1, -1], ["Viking Commons (Brunch)", 1000, 1330], ["Viking Commons (Lite Lunch)", -1, -1], 
 							["Viking Commons (Dinner)", 1700, 1830], ["Viking Commons (Late Night)", 2100, 2230],
 						
 						["Fairhaven Commons (Breakfast)", -1, -1], ["Fairhaven Commons (Brunch)", 1000, 1330], ["Fairhaven Commons (Lite Lunch)", -1, -1], 
-							["Fairhaven Commons (Dinner)", 1700, 1830], ["Fairhaven Commons (Late Night)", 2130, 2300]];
+							["Fairhaven Commons (Dinner)", 1700, 1830], ["Fairhaven Commons (Late Night)", 2130, 2300],
 
-		locations = [["VU Café", -1, -1], ["VU Market", 1100, 1900], ["VU Subway", 1100, 1900], ["VU Panda Express", -1, -1], ["The Underground", -1, -1], 
+					["VU Café", -1, -1], ["VU Market", 1100, 1900], ["VU Subway", 1100, 1900], ["VU Panda Express", -1, -1], ["The Underground", -1, -1], 
 					["Miller Market", -1, -1], ["Zoe's Bookside Bagels", 1200, 2300], ["Rock's Edge Café", -1, -1],["Atrium POD Market", -1, -1], 
 					["Atrium Starbucks", -1, -1], ["Atrium Topios", -1, -1], ["Atrium Subway", -1, -1], ["BT Station", -1, -1], ["The Haven", 1800, 2300]];			
 	}
-	printOpen(residential);
+	//printOpen(residential);
 	printOpen(locations);
 	
 }
@@ -182,16 +183,21 @@ function printOpen(list) {
 			comingup.push(["<p>" + list[i][0] + "<span>Opens at " + convertToTime(list[i][1]) + "</span></p>", [list[i][1]]]);
 		}
 	}
-	for (var index = 0; index < opennow.length; index++) {
-		var opennowAB = opennow.sort(function (a, b) {
-			return a.toString().localeCompare(b.toString());
-		});
-		
-		var opennowSorted = opennowAB.sort(function (a, b) {
-			return a[1]>b[1];
+	for (var index = 0; index < opennow.length; index++) {	
+		opennow.sort(function (a, b) {
+			return b[0].toString().localeCompare(a[0].toString());
 		});
 
-		document.getElementById("output").innerHTML += opennowSorted[index][0];		
+		opennow.sort(function (a, b) {
+			return a[1].toString().localeCompare(b[1].toString());
+		});
+
+		//opennow.sort(function(a, b) {
+			//return a[1]>b[1];
+		//});
+		
+
+		document.getElementById("output").innerHTML += opennow[index][0];		
 	}
 
 	
