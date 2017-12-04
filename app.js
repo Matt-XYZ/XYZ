@@ -10,7 +10,7 @@ function windowOnload() {
 	document.getElementById("output2").innerHTML = "<h3><u>Coming up</u></h3><br />";
 	var timeDisplay = document.getElementById("timeDisplay");
 	timeDisplay.innerHTML = calcTime('Bellingham', '+8');
-	findOpen("Monday");
+	findOpen(wkday);
 }
 
 function pad(num) {
@@ -190,7 +190,7 @@ function printOpen(list) {
 		});
 		
 		if (opennowSorted.length < 1) {
-			document.getElementById("output").innerHTML += "nothing yet";		
+			document.getElementById("output").innerHTML += "<p>Nothing yet</p>";		
 		}
 		else {
 			document.getElementById("output").innerHTML += opennowSorted[index][0];
@@ -208,7 +208,7 @@ function printOpen(list) {
 		});
 		
 		if (comingupSorted.length < 1) {
-			document.getElementById("output2").innerHTML += "nothing yet";	
+			document.getElementById("output2").innerHTML += "<p>Nothing yet</p>";	
 		}
 		else {
 			document.getElementById("output2").innerHTML += comingupSorted[index][0];
