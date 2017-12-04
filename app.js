@@ -185,7 +185,13 @@ function printOpen(list) {
 			return a[1]>b[1];
 		});
 		
-		document.getElementById("output").innerHTML += opennowSorted[index][0];
+		if (opennowSorted.length < 1) {
+			document.getElementById("output").innerHTML += "nothing yet";		
+		}
+		else {
+			document.getElementById("output").innerHTML += opennowSorted[index][0];
+		}
+		
 	}
 	
 	for (var index = 0; index < comingup.length; index++) {
@@ -193,7 +199,13 @@ function printOpen(list) {
 			return a[1]>b[1];
 		});
 		
-		document.getElementById("output2").innerHTML += comingupSorted[index][0];
+		if (comingupSorted.length < 1) {
+			document.getElementById("output2").innerHTML += "nothing yet";	
+		}
+		else {
+			document.getElementById("output2").innerHTML += comingupSorted[index][0];
+		}
+		
 	}
 
 }
