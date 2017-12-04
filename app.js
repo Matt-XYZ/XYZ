@@ -181,7 +181,11 @@ function printOpen(list) {
 		}
 	}
 	for (var index = 0; index < opennow.length; index++) {
-		var opennowSorted = opennow.sort(function (a, b) {
+		var opennowAB = opennow.sort(function (a, b) {
+			return a.toString().localeCompare(b.toString());
+		});
+		
+		var opennowSorted = opennowAB.sort(function (a, b) {
 			return a[1]>b[1];
 		});
 		
@@ -195,7 +199,11 @@ function printOpen(list) {
 	}
 	
 	for (var index = 0; index < comingup.length; index++) {
-		var comingupSorted = comingup.sort(function (a, b) {
+		var comingupAB = comingup.sort(function (a, b) {
+			return a.toString().localeCompare(b.toString());
+		});
+		
+		var comingupSorted = comingupAB.sort(function (a, b) {
 			return a[1]>b[1];
 		});
 		
