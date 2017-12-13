@@ -3,6 +3,8 @@
 <head>
 	<title>WWU Open Dining Locations</title>
 	<script src="app.js?d=12-5-2017-0" type="text/javascript"></script>
+	<script src="jquery-3.1.0.min.js" type="text/javascript"></script>
+	<script src="bootstrap.min.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="bootstrap.min.css" />
 	<link rel="stylesheet" href="app.css?d=12-4-2017-0" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,6 +12,11 @@
 </head>
 <body>
 	<div id="body">
+
+	<div class="alert alert-info alert-dismissable">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close" style="font-size: 1.5em">&times;</a>
+		<strong>Notice: </strong>This website does not account for closures over winter break.
+	</div>
 		<h1 id="timeDisplay"></h1>
 		<h4><a href="#" onclick="windowOnload(); return false;">Click here to refresh</a></h4>
 		<div id="output"></div>
