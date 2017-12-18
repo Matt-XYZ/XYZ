@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Matt Jones</title>
+        <link rel="stylesheet" href="bootstrap.min.css" />
+        <link rel="stylesheet" href="index.css" />
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <div id="main">
+            <div id="form-wrapper">
+                <form id="contact" action="https://formspree.io/mattj456@gmail.com" method="post">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="John Smith" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" name="email" placeholder="example@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control" name="message" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="g-recaptcha" data-sitekey="6Lf0bT0UAAAAANAxAYzchbb9JGDkZ-h0Xc0hTuJM"></div>
+                    </div>              
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>                   
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
