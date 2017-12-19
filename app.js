@@ -92,8 +92,6 @@ function calcTime(city, offset) {
 function findOpen(weekday) {
 
 	var locations = [];
-	var residential = [];
-
 
 	if (weekday == "Monday" || weekday == "Tuesday" || weekday == "Wednesday" || weekday == "Thursday") {
 		locations = [["Ridgeway Commons (Breakfast)", 700, 1100], ["Ridgeway Commons (Lunch)", 1100, 1330], ["Ridgeway Commons (Lite Lunch)", 1330, 1700],
@@ -156,9 +154,7 @@ function findOpen(weekday) {
 					["Starbucks @ The Atrium", -1, -1], ["Topio's @ The Atrium", -1, -1], ["Subway @ The Atrium", -1, -1], ["BT Station", -1, -1], ["The Haven", 1800, 2300]];
 	}
 	printOpen(locations);
-
 }
-
 
 function addTime(current, min) {
 	var firstTwo = Number(fourpad(current.toString()).split("")[0] + fourpad(current.toString()).split("")[1]);
@@ -184,40 +180,31 @@ function convertToTime(value) {
 function printOpen(list) {
 	for (var i = 0; i < list.length; i++) {
 		if (shortTime >= list[i][1] && shortTime < list[i][2]) {
-			opennow.push(["<p>" + list[i][0] + "<span>Closes at " + convertToTime(list[i][2]) + "</span></p>", [list[i][2]]]);
+			opennow.push([ [list[i][2]], "<p>" + list[i][0] + "<span>Closes at " + convertToTime(list[i][2]) + "</span></p>",  ]);
 		}
 
 		else if (shortTime < list[i][1] && addTime(shortTime, 120) > list[i][1]) {
-			comingup.push(["<p>" + list[i][0] + "<span>Opens at " + convertToTime(list[i][1]) + "</span></p>", [list[i][1]]]);
+			comingup.push([ [list[i][1]] , "<p>" + list[i][0] + "<span>Opens at " + convertToTime(list[i][1]) + "</span></p>", ]);
 		}
 	}
 	for (var index = 0; index < opennow.length; index++) {
-		opennow.sort(function (a, b) {
-			return b[0].toString().localeCompare(a[0].toString());
-		});
-
-		opennow.sort(function (a, b) {
-			return a[1].toString().localeCompare(b[1].toString());
-		});
-
-		document.getElementById("output").innerHTML += opennow[index][0];
+		opennow.sort();
+		document.getElementById("output").innerHTML += opennow[index][1];
 	}
 
 
 	for (var index = 0; index < comingup.length; index++) {
-		comingup.sort(function (a, b) {
-			return b[0].toString().localeCompare(a[0].toString());
-		});
-
-		comingup.sort(function (a, b) {
-			return a[1].toString().localeCompare(b[1].toString());
-		});
-
-		document.getElementById("output2").innerHTML += comingup[index][0];
-
-
+		comingup.sort();
+		document.getElementById("output2").innerHTML += comingup[index][1];
 	}
 
+}
+
+//check for use of old URL
+function checkParam() {
+	if (getAllUrlParams().alert == "url") {
+		alert("It appears you are using an old URL. If you have this page bookmarked, please update it to \"dining.mattjones.xyz\"")
+	}
 }
 
 function getAllUrlParams(url) {
@@ -280,11 +267,4 @@ function getAllUrlParams(url) {
   }
 
   return obj;
-}
-
-// check for url parameters
-function checkParam() {
-	if (getAllUrlParams().alert == "url") {
-		alert("It appears you are using an old URL. If you have this page bookmarked, please update it to \"dining.mattjones.xyz\"")
-	}
 }
