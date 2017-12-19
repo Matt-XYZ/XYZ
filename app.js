@@ -285,6 +285,6 @@ function getAllUrlParams(url) {
 // check for url parameters
 function checkParam() {
 	if (getAllUrlParams().alert == "url") {
-		alert("It appears you are using an old URL. If you have this page bookmarked, please update it to the current URL in your address bar.")
+		alert("It appears you are using an old URL. If you have this page bookmarked, please update it to \"dining.mattjones.xyz\"")
 	}
 }
