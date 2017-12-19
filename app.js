@@ -85,6 +85,12 @@ function calcTime(city, offset) {
 
 	wkday = dayWeek[nd.getDay()][1];
 
+	if (getAllUrlParams().mode == "debug") {
+		shortTime = prompt("Enter time");
+		wkday = prompt("Enter weekday");
+		return "<span style=\"color: red;\">Debugging: " + wkday + ", " +  shortTime + "</span>";
+	}
+
     // return time as a string
     return "WWU Dining locations open as of " + wkday + ", " +  toTwelveHr(nd.getHours()) + ":" + pad(nd.getMinutes()) + " " + AMPM(fullHour);
 }
