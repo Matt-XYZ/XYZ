@@ -15,13 +15,16 @@ function windowOnload() {
 	var timeDisplay = document.getElementById("timeDisplay");
 	timeDisplay.innerHTML = calcTime('Bellingham', '+8');
 
-	document.getElementById("output").innerHTML = "<h3><u>Open Locations</u></h3><br /><img id='loader' src='spinner.gif' />";
-	document.getElementById("output2").innerHTML = "<h3><u>Coming up</u></h3><br /><img id='loader2' src='spinner.gif' />";
+	document.getElementById("output").innerHTML = "<h3>Open Locations</h3><br /><img id='loader' src='spinner.gif' />";
+	document.getElementById("output2").innerHTML = "<h3>Coming Up</h3><br /><img id='loader2' src='spinner.gif' />";
 
 	setTimeout(function() {
 		document.getElementById("loader").style.display = "none";
 		document.getElementById("loader2").style.display = "none";
 		findOpen(wkday);
+
+		// keep refresh button disabled until initial load completes
+		jQuery("#refresh-link").removeClass("disabled");
 
 		if (opennow.length < 1) {
 			document.getElementById("output").innerHTML += "<p><i>Nothing right now</i></p>";
@@ -31,6 +34,14 @@ function windowOnload() {
 			document.getElementById("output2").innerHTML += "<p><i>Nothing in the next 2 hours</i></p>";
 		}
 	}, 1500);
+} // end windowOnload
+
+
+function refresh() {
+	windowOnload();
+
+	// add disabled class on button click (will be removed when windowOnload finishes executing)
+	jQuery("#refresh-link").addClass("disabled");
 
 }
 
