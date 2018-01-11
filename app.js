@@ -112,13 +112,13 @@ function findOpen(weekday) {
 
 	if (weekday == "Monday" || weekday == "Tuesday" || weekday == "Wednesday" || weekday == "Thursday") {
 		locations = [["Ridgeway Commons (Breakfast)", 700, 1100], ["Ridgeway Commons (Lunch)", 1100, 1330], ["Ridgeway Commons (Lite Lunch)", 1330, 1700],
-							["Ridgeway Commons (Dinner)", 1700, 1900], ["Ridgeway Commons (Late Night)", 2100, 2230],
+							["Ridgeway Commons (Dinner)", 1700, 1930], ["Ridgeway Commons (Late Night)", 2100, 2230],
 
 						["Viking Commons (Breakfast)", 700, 1100], ["Viking Commons (Lunch)", 1100, 1330], ["Viking Commons (Lite Lunch)", 1330, 1700],
-							["Viking Commons (Dinner)", 1700, 1900], ["Viking Commons (Late Night)", 2100, 2230],
+							["Viking Commons (Dinner)", 1700, 1930], ["Viking Commons (Late Night)", 2100, 2230],
 
 						["Fairhaven Commons (Breakfast)", 700, 1100], ["Fairhaven Commons (Lunch)", 1100, 1330], ["Fairhaven Commons (Lite Lunch)", 1330, 1700],
-							["Fairhaven Commons (Dinner)", 1700, 1900], ["Fairhaven Commons (Late Night)", 2100, 2230],
+							["Fairhaven Commons (Dinner)", 1700, 1930], ["Fairhaven Commons (Late Night)", 2100, 2230],
 
 
 					["POD Market @ The Atrium", 730, 1800], ["Starbucks @ The Atrium", 730, 1800], ["Subway @ The Atrium", 730, 1700], ["Topio's @ The Atrium", 1030, 1700], ["BT Station", 1100, 2300],
