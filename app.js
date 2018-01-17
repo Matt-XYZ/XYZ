@@ -45,6 +45,10 @@ function refresh() {
 	// add disabled class on button click (will be removed when windowOnload finishes executing)
 	jQuery("#refresh-link").addClass("disabled");
 
+	// reset heights
+	$("#output").css("height", "inherit");
+	$("#output2").css("height", "inherit");
+
 }
 
 function pad(num) {
@@ -217,6 +221,8 @@ function printOpen(list) {
 		document.getElementById("output2").innerHTML += comingup[index][1];
 	}
 
+
+	// adjust height of output divs so that they are both equal to the taller one
 	if (opennow.length > comingup.length) {
 		$("#output2").height($("#output").height());
 	}
