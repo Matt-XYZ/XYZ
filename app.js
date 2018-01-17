@@ -34,6 +34,8 @@ function windowOnload() {
 			document.getElementById("output2").innerHTML += "<p><i>Nothing in the next 2 hours</i></p>";
 		}
 	}, 1500);
+
+	
 } // end windowOnload
 
 
@@ -131,7 +133,7 @@ function findOpen(weekday) {
 							["Ridgeway Commons (Dinner)", 1700, 1830], ["Ridgeway Commons (Late Night)", 2030, 2200],
 
 						["Viking Commons (Breakfast)", 700, 1100], ["Viking Commons (Lunch)", 1100, 1330], ["Viking Commons (Lite Lunch)", 1330, 1700],
-							["Viking Commons (Dinner)", 1700, 1900], ["Viking Commons (Late Night)", 2030, 2200],
+							["Viking Commons (Dinner)", 1700, 1830], ["Viking Commons (Late Night)", 2030, 2200],
 
 						["Fairhaven Commons (Breakfast)", 700, 1100], ["Fairhaven Commons (Lunch)", 1100, 1330], ["Fairhaven Commons (Lite Lunch)", 1330, 1700],
 							["Fairhaven Commons (Dinner)", 1700, 1830], ["Fairhaven Commons (Late Night)", 2030, 2200],
@@ -213,6 +215,13 @@ function printOpen(list) {
 	for (var index = 0; index < comingup.length; index++) {
 		comingup.sort();
 		document.getElementById("output2").innerHTML += comingup[index][1];
+	}
+
+	if (opennow.length > comingup.length) {
+		$("#output2").height($("#output").height());
+	}
+	else if (comingup.length > opennow.length) {
+		$("#output").height($("#output2").height());
 	}
 
 }
