@@ -35,7 +35,7 @@ function windowOnload() {
 		}
 	}, 1500);
 
-	
+
 } // end windowOnload
 
 
@@ -51,17 +51,21 @@ function refresh() {
 
 }
 
+// add a leading zero to a number when needed
 function pad(num) {
 	var s = num+"";
 	while (s.length < 2) s = "0" + s;
 	return s;
 }
+
+// add leading zero to 3 digit number
 function fourpad(num) {
 	var s = num+"";
 	if (s.length == 3) s = "0" + s;
 	return s;
 }
 
+// convert 24hr hours to 12hr
 function toTwelveHr(hr) {
 	if (hr > 12) {
 		return hr - 12;
@@ -72,6 +76,7 @@ function toTwelveHr(hr) {
 	else return hr;
 }
 
+// determine AM or PM value of a time
 function AMPM(hr) {
 	if (hr <= 11 || hr == 24)
 		return "AM";
@@ -116,6 +121,7 @@ function findOpen(weekday) {
 
 	var locations = [];
 
+	// Monday through Thursday
 	if (weekday == "Monday" || weekday == "Tuesday" || weekday == "Wednesday" || weekday == "Thursday") {
 		locations = [["Ridgeway Commons (Breakfast)", 700, 1100], ["Ridgeway Commons (Lunch)", 1100, 1330], ["Ridgeway Commons (Lite Lunch)", 1330, 1700],
 							["Ridgeway Commons (Dinner)", 1700, 1930], ["Ridgeway Commons (Late Night)", 2100, 2230],
@@ -132,6 +138,7 @@ function findOpen(weekday) {
 					["VU Market", 730, 1900], ["Panda Express @ VU", 1030, 1900], ["Subway @ VU", 730, 1900], ["Zoe's Bookside Bagels", 730, 2300], ["Freshens Fresh Food Studio", 800, 1700]];
 	}
 
+	// Friday
 	else if (weekday == "Friday") {
 		locations = [["Ridgeway Commons (Breakfast)", 700, 1100], ["Ridgeway Commons (Lunch)", 1100, 1330], ["Ridgeway Commons (Lite Lunch)", 1330, 1700],
 							["Ridgeway Commons (Dinner)", 1700, 1830], ["Ridgeway Commons (Late Night)", 2030, 2200],
@@ -147,6 +154,7 @@ function findOpen(weekday) {
 					["Starbucks @ The Atrium", 730, 1650], ["Topio's @ The Atrium", 1030, 1430], ["Subway @ The Atrium", 730, 1430], ["BT Station", 1100, 1700], ["The Haven", 1000, 1700]];
 	}
 
+	// Saturday
 	else if (weekday == "Saturday") {
 		locations = [["Ridgeway Commons (Breakfast)", -1, -1], ["Ridgeway Commons (Brunch)", 1000, 1330], ["Ridgeway Commons (Lite Lunch)", -1, -1],
 							["Ridgeway Commons (Dinner)", 1700, 1830], ["Ridgeway Commons (Late Night)", 2030, 2200],
@@ -162,6 +170,7 @@ function findOpen(weekday) {
 					["Starbucks @ The Atrium", -1, -1], ["Topio's @ The Atrium", -1, -1], ["Subway @ The Atrium", -1, -1], ["BT Station", -1, -1], ["The Haven", 1400, 2000]];
 	}
 
+	// Sunday
 	else if (weekday == "Sunday") {
 		locations = [["Ridgeway Commons (Breakfast)", -1, -1], ["Ridgeway Commons (Brunch)", 1000, 1330], ["Ridgeway Commons (Lite Lunch)", -1, -1],
 							["Ridgeway Commons (Dinner)", 1700, 1830], ["Ridgeway Commons (Late Night)", 2100, 2230],
@@ -179,6 +188,7 @@ function findOpen(weekday) {
 	printOpen(locations);
 }
 
+// Add an amount of minutes to a number so that it rolls over at 60, rather than 100
 function addTime(current, min) {
 	var firstTwo = Number(fourpad(current.toString()).split("")[0] + fourpad(current.toString()).split("")[1]);
 	var lastTwo = Number(fourpad(current.toString()).split("")[2] + fourpad(current.toString()).split("")[3]);
@@ -190,6 +200,7 @@ function addTime(current, min) {
 	return Number((d.getHours().toString()) + (pad(d.getMinutes()).toString()));
 }
 
+// convert a number value to a formatted string for display
 function convertToTime(value) {
 	var firstTwo = Number(fourpad(value.toString()).split("")[0] + fourpad(value.toString()).split("")[1]);
 	var lastTwo = Number(fourpad(value.toString()).split("")[2] + fourpad(value.toString()).split("")[3]);
@@ -220,16 +231,6 @@ function printOpen(list) {
 		comingup.sort();
 		document.getElementById("output2").innerHTML += comingup[index][1];
 	}
-
-
-	// adjust height of output divs so that they are both equal to the taller one
-	if (opennow.length > comingup.length) {
-		$("#output2").height($("#output").height());
-	}
-	else if (comingup.length > opennow.length) {
-		$("#output").height($("#output2").height());
-	}
-
 }
 
 //check for use of old URL

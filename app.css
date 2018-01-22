@@ -3,7 +3,7 @@ body, html {
     margin: 0;
     padding: 0;
     width: 100%;
-    background-color: gray;
+    background-color: black;
 }
 div#body {
     display: block;
@@ -63,13 +63,17 @@ span {
     background-color: rgba(0, 255, 0, 0.1);
     border: 1px solid rgba(0, 255, 0, 0.2);
 }
+#output2 {
+    background-color: rgba(255, 255, 0, 0.1) !important;
+    border: 1px solid rgba(255, 255, 0, 0.2) !important;
+}
 #output h3 {
     padding-bottom: 0.5em;
     border-bottom: 1px solid rgba(0, 255, 0, 0.2);
 }
 #output2 h3 {
     padding-bottom: 0.5em;
-    border-bottom: 0.5px solid rgba(255, 255, 0, 1);
+    border-bottom: 0.5px solid rgba(255, 255, 0, 0.6);
 }
 #output p {
     padding-bottom: 0.6em;
@@ -80,14 +84,10 @@ span {
 }
 #output2 p {
     padding-bottom: 0.6em;
-    border-bottom: 0.5px solid rgba(255, 255, 0, 1);
+    border-bottom: 0.5px solid rgba(255, 255, 0, 0.6);
 }
 #output2 p:last-of-type {
     border-bottom: none;
-}
-#output2 {
-    background-color: rgba(255, 255, 0, 0.1) !important;
-    border: 1px solid rgba(255, 255, 0, 0.2) !important;
 }
 #output hr {
     border-color: rgba(0, 255, 0, 0.2);
