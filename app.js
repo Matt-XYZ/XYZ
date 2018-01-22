@@ -44,11 +44,6 @@ function refresh() {
 
 	// add disabled class on button click (will be removed when windowOnload finishes executing)
 	jQuery("#refresh-link").addClass("disabled");
-
-	// reset heights
-	$("#output").css("height", "inherit");
-	$("#output2").css("height", "inherit");
-
 }
 
 // add a leading zero to a number when needed
