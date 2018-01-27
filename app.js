@@ -1,6 +1,7 @@
 var shortTime;
 var wkday;
 var output;
+var openIndex, comingUpIndex;
 var opennow = [];
 var comingup = [];
 window.onload = function() {
@@ -9,11 +10,13 @@ window.onload = function() {
 function windowOnload() {
 	opennow = [];
 	comingup = [];
+	openIndex = 0;
+	comingUpIndex = 0;
 
 	$("#timeDisplay").html(calcTime("Bellingham", "+8"));
 
-	$("#output").html("<h3>Open Locations</h3><br /><img id='loader' src='spinner.gif' />");
-	$("#output2").html("<h3>Coming Up</h3><br /><img id='loader2' src='spinner.gif' />");
+	$("#output").html("<h3>Open Locations</h3><img id='loader' src='spinner.gif' />");
+	$("#output2").html("<h3>Coming Up</h3><img id='loader2' src='spinner.gif' />");
 
 	setTimeout(function() {
 		$("#loader").css("display", "none");
@@ -24,11 +27,11 @@ function windowOnload() {
 		$("#refresh-link").removeClass("disabled");
 
 		if (opennow.length < 1) {
-			$("#output").html("<p><i>Nothing right now</i></p>");
+			$("#output").append("<p><i>Nothing right now</i></p>");
 		}
 
 		if (comingup.length < 1) {
-			$("#output2").html("<p><i>Nothing in the next 2 hours</i></p>");
+			$("#output2").append("<p><i>Nothing in the next 2 hours</i></p>");
 		}
 	}, 1500);
 
@@ -207,10 +210,12 @@ function printOpen(list) {
 	for (var i = 0; i < list.length; i++) {
 		if (shortTime >= list[i][1] && shortTime < list[i][2]) {
 			opennow.push([ [list[i][2]], "<p>" + list[i][0] + "<span>Closes at " + convertToTime(list[i][2]) + "</span></p>",  ]);
+			openIndex++;
 		}
 
 		else if (shortTime < list[i][1] && addTime(shortTime, 120) >= list[i][1]) {
 			comingup.push([ [list[i][1]] , "<p>" + list[i][0] + "<span>Opens at " + convertToTime(list[i][1]) + "</span></p>", ]);
+			comingUpIndex++;
 		}
 	}
 	for (var index = 0; index < opennow.length; index++) {
@@ -229,6 +234,10 @@ function printOpen(list) {
 		// append current item to the HTML output2
 		$("#output2").append(comingup[index][1]);
 	}
+
+	// update headings with indexes
+	$("#output h3").text("Open Locations (" + openIndex + ")");
+	$("#output2 h3").text("Coming Up (" + comingUpIndex + ")");
 }
 
 function getAllUrlParams(url) {

@@ -1,31 +1,37 @@
-body, html {
+body {
     font-family: sans-serif;
+    font-weight: 500;
     margin: 0;
     padding: 0;
     width: 100%;
-    background-color: black;
+    background: url("wwu.png") no-repeat center center;
+    background-attachment: fixed;
 }
 div#body {
     display: block;
     width: 70%;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 3em;
+    /* margin-bottom: 3em; */
     margin-top: 3em;
     text-align: center;
-    background-color: white;
-    border-radius: 0.5em;
+    color: #3f3f3f;
+    background-color: rgba(255, 255, 255, 0.65);
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
 }
 footer {
     display: block;
     width: 70%;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.65);
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 3em;
     padding: 2em 2em 1em 2em;
     text-align: center;
-    border-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    font-weight: 600;
 }
 #timeDisplay {
     padding: 1em;
@@ -40,10 +46,10 @@ h1 {
     display: inline-block;
     text-align: center;
 }
+
 span {
 	display: block;
 	font-size: 0.6em;
-	color: gray;
 	padding-top: 0.1em;
 }
 #refresh {
@@ -60,11 +66,11 @@ span {
     margin-right: auto;
     margin-bottom: 2em;
     text-align: center;
-    background-color: rgba(0, 255, 0, 0.1);
+    background-color: rgba(70, 219, 70, 0.5);
     border: 1px solid rgba(0, 255, 0, 0.2);
 }
 #output2 {
-    background-color: rgba(255, 255, 0, 0.1) !important;
+    background-color: rgba(255, 235, 90, 0.5) !important;
     border: 1px solid rgba(255, 255, 0, 0.2) !important;
 }
 #output h3 {
@@ -76,6 +82,7 @@ span {
     border-bottom: 0.5px solid rgba(255, 255, 0, 0.6);
 }
 #output p {
+    margin-top: 0;
     padding-bottom: 0.6em;
     border-bottom: 1px solid rgba(0, 255, 0, 0.2);
 }
@@ -107,6 +114,9 @@ span {
     }
     #timeDisplay {
         font-size: 2em;
+    }
+    #output, #output2 {
+        font-weight: 600;
     }
 }
 @media (max-width: 900px) {
