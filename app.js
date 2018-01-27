@@ -7,31 +7,28 @@ window.onload = function() {
 	windowOnload();
 }
 function windowOnload() {
-	checkParam();
-
 	opennow = [];
 	comingup = [];
 
-	var timeDisplay = document.getElementById("timeDisplay");
-	timeDisplay.innerHTML = calcTime('Bellingham', '+8');
+	$("#timeDisplay").html(calcTime("Bellingham", "+8"));
 
-	document.getElementById("output").innerHTML = "<h3>Open Locations</h3><br /><img id='loader' src='spinner.gif' />";
-	document.getElementById("output2").innerHTML = "<h3>Coming Up</h3><br /><img id='loader2' src='spinner.gif' />";
+	$("#output").html("<h3>Open Locations</h3><br /><img id='loader' src='spinner.gif' />");
+	$("#output2").html("<h3>Coming Up</h3><br /><img id='loader2' src='spinner.gif' />");
 
 	setTimeout(function() {
-		document.getElementById("loader").style.display = "none";
-		document.getElementById("loader2").style.display = "none";
+		$("#loader").css("display", "none");
+		$("#loader2").css("display", "none");
 		findOpen(wkday);
 
 		// keep refresh button disabled until initial load completes
-		jQuery("#refresh-link").removeClass("disabled");
+		$("#refresh-link").removeClass("disabled");
 
 		if (opennow.length < 1) {
-			document.getElementById("output").innerHTML += "<p><i>Nothing right now</i></p>";
+			$("#output").html("<p><i>Nothing right now</i></p>");
 		}
 
 		if (comingup.length < 1) {
-			document.getElementById("output2").innerHTML += "<p><i>Nothing in the next 2 hours</i></p>";
+			$("#output2").html("<p><i>Nothing in the next 2 hours</i></p>");
 		}
 	}, 1500);
 
@@ -43,7 +40,7 @@ function refresh() {
 	windowOnload();
 
 	// add disabled class on button click (will be removed when windowOnload finishes executing)
-	jQuery("#refresh-link").addClass("disabled");
+	$("#refresh-link").addClass("disabled");
 }
 
 // add a leading zero to a number when needed
@@ -212,26 +209,25 @@ function printOpen(list) {
 			opennow.push([ [list[i][2]], "<p>" + list[i][0] + "<span>Closes at " + convertToTime(list[i][2]) + "</span></p>",  ]);
 		}
 
-		else if (shortTime < list[i][1] && addTime(shortTime, 120) > list[i][1]) {
+		else if (shortTime < list[i][1] && addTime(shortTime, 120) >= list[i][1]) {
 			comingup.push([ [list[i][1]] , "<p>" + list[i][0] + "<span>Opens at " + convertToTime(list[i][1]) + "</span></p>", ]);
 		}
 	}
 	for (var index = 0; index < opennow.length; index++) {
+		// sort the array of open locations
 		opennow.sort();
-		document.getElementById("output").innerHTML += opennow[index][1];
+
+		// append current item to the HTML output
+		$("#output").append(opennow[index][1]);
 	}
 
 
 	for (var index = 0; index < comingup.length; index++) {
+		// sort the array of coming up locations
 		comingup.sort();
-		document.getElementById("output2").innerHTML += comingup[index][1];
-	}
-}
 
-//check for use of old URL
-function checkParam() {
-	if (getAllUrlParams().alert == "url") {
-		alert("It appears you are using an old URL. If you have this page bookmarked, please update it to \"dining.mattjones.xyz\"")
+		// append current item to the HTML output2
+		$("#output2").append(comingup[index][1]);
 	}
 }
 
