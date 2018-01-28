@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    background: url("wwu.png") no-repeat center center;
+    background: url("wwu.jpg?1") no-repeat center center;
     background-attachment: fixed;
 }
 div#body {
