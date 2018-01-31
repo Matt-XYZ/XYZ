@@ -6,6 +6,7 @@ body {
     width: 100%;
     background: url("wwu.png") no-repeat center center;
     background-attachment: fixed;
+    background-size: cover;
 }
 div#body {
     display: block;
