@@ -34,32 +34,9 @@ footer {
     border-bottom-right-radius: 0.5em;
     font-weight: 600;
 }
-div#locationImg {
-    position: relative;
-    background-color: red;
-    left: 0;
-    right: 0;
-    display: none;
-    padding: 1em;
-    width: auto;
-    margin-left: auto;
-    margin-right: auto;
-}
-div#locationImg a {
-    display: block;
-    top: 0;
-    font-weight: bold;
-    color: white;
-    z-index: 10;
-    text-align: right;
-}
-img.location {
-    max-width: 45%;
-    margin-left: auto;
-    margin-right: auto;
-    border: 10px solid white;
-    border-radius: 0.25em;
-    z-index: 5;
+
+a.imgHover {
+    font-size: 0.8em;
 }
 
 #timeDisplay {
