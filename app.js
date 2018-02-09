@@ -213,7 +213,7 @@ function printOpen(list) {
 		}
 
 		else if (shortTime < list[i][1] && addTime(shortTime, 120) >= list[i][1]) {
-			comingup.push([ [list[i][1]] , "<p class=" + list[i][3] + ">" + list[i][0] + "<a id=" + list[i][3] + " href='#' onclick='return false;' class='imgHover'>(?)</a><span>Opens at " + convertToTime(list[i][1]) + "</span></p>", ]);
+			comingup.push([ [list[i][1]] , "<p class=" + list[i][3] + ">" + list[i][0] + "<a id=" + list[i][3] + " href='#' onclick='return false;' class='imgHover'><sup>(?)</sup></a><span>Opens at " + convertToTime(list[i][1]) + "</span></p>", ]);
 			comingUpIndex++;
 		}
 	}
