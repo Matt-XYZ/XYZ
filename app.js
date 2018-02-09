@@ -208,12 +208,12 @@ function convertToTime(value) {
 function printOpen(list) {
 	for (var i = 0; i < list.length; i++) {
 		if (shortTime >= list[i][1] && shortTime < list[i][2]) {
-			opennow.push([ [list[i][2]], "<p class=" + list[i][3] + ">" + list[i][0] + "<a id=" + list[i][3] + " href='#' class='imgHover'><sup>(?)</sup></a><span>Closes at " + convertToTime(list[i][2]) + "</span></p>"]);
+			opennow.push([ [list[i][2]], "<p class=" + list[i][3] + ">" + list[i][0] + "<a id=" + list[i][3] + " href='#' onclick='return false;' class='imgHover'><sup>(?)</sup></a><span>Closes at " + convertToTime(list[i][2]) + "</span></p>"]);
 			openIndex++;
 		}
 
 		else if (shortTime < list[i][1] && addTime(shortTime, 120) >= list[i][1]) {
-			comingup.push([ [list[i][1]] , "<p class=" + list[i][3] + ">" + list[i][0] + "<a id=" + list[i][3] + " href='#' class='imgHover'>(?)</a><span>Opens at " + convertToTime(list[i][1]) + "</span></p>", ]);
+			comingup.push([ [list[i][1]] , "<p class=" + list[i][3] + ">" + list[i][0] + "<a id=" + list[i][3] + " href='#' onclick='return false;' class='imgHover'>(?)</a><span>Opens at " + convertToTime(list[i][1]) + "</span></p>", ]);
 			comingUpIndex++;
 		}
 	}
