@@ -1,0 +1,256 @@
+{
+	"vu-cafe": {
+		"display_name": "VU Cafe",
+		"Monday": {
+			"start": 730,
+			"end": 1900
+		},
+		"Tuesday": {
+			"start": 730,
+			"end": 1900
+		},
+		"Wednesday": {
+			"start": 730,
+			"end": 1900
+		},
+		"Thursday": {
+			"start": 730,
+			"end": 1900
+		},
+		"Friday": {
+			"start": 730,
+			"end": 1900
+		},
+		"Saturday": {
+			"start": 900,
+			"end": 1300
+		},
+		"Sunday": {
+			"start": -1,
+			"end": -1
+		}
+
+	},
+	"vu-market": {
+		"display_name": "VU Market",
+		"Monday": {
+			"start": 730,
+			"end": 1900
+		},
+		"Tuesday": {
+			"start": 730,
+			"end": 1900
+		},
+
+		"Wednesday": {
+			"start": 730,
+			"end": 1900
+		},
+
+		"Thursday": {
+			"start": 730,
+			"end": 1900
+		},
+		"Friday": {
+			"start": 730,
+			"end": 1900
+		},
+		"Saturday": {
+			"start": 1100,
+			"end": 1900
+		},
+		"Sunday": {
+			"start": 1100,
+			"end": 1900
+		}
+	},
+	"vu-subway": {
+		"display_name": "Subway @ VU",
+		"Monday": {
+			"start": 730,
+			"end": 1900
+		},
+		"Tuesday": {
+			"start": 730,
+			"end": 1900
+		},
+
+		"Wednesday": {
+			"start": 730,
+			"end": 1900
+		},
+
+		"Thursday": {
+			"start": 730,
+			"end": 1900
+		},
+		"Friday": {
+			"start": 730,
+			"end": 1900
+		},
+		"Saturday": {
+			"start": 1100,
+			"end": 1900
+		},
+		"Sunday": {
+			"start": 1100,
+			"end": 1900
+		}
+	},
+	"vu-pexpress": {
+		"display_name": "Panda Express @ VU",
+		"Monday": {
+			"start": 1030,
+			"end": 1900
+		},
+		"Tuesday": {
+			"start": 1030,
+			"end": 1900
+		},
+		"Wednesday": {
+			"start": 1030,
+			"end": 1900
+		},
+		"Thursday": {
+			"start": 1030,
+			"end": 1900
+		},
+		"Friday": {
+			"start": 1030,
+			"end": 1900
+		},
+		"Saturday": {
+			"start": -1,
+			"end": -1
+		},
+		"Sunday": {
+			"start": -1,
+			"end": -1
+		}
+	},
+	"coffeehouse": {
+		"display_name": "Underground Coffeehouse",
+		"Monday": {
+			"start": 900,
+			"end": 2200
+		},
+		"Tuesday": {
+			"start": 900,
+			"end": 2200
+		},
+		"Wednesday": {
+			"start": 900,
+			"end": 2200
+		},
+		"Thursday": {
+			"start": 900,
+			"end": 2200
+		},
+		"Friday": {
+			"start": 900,
+			"end": 2200
+		},
+		"Saturday": {
+			"start": -1,
+			"end": -1
+		},
+		"Sunday": {
+			"start": -1,
+			"end": -1
+		},
+	},
+	"miller-market": {
+		"display_name": "Miller Market",
+		"Monday": {
+			"start": 730,
+			"end": 1800
+		},
+		"Tuesday": {
+			"start": 730,
+			"end": 1800
+		},
+		"Wednesday": {
+			"start": 730,
+			"end": 1800
+		},
+		"Thursday": {
+			"start": 730,
+			"end": 1800
+		},
+		"Friday": {
+			"start": 730,
+			"end": 1700
+		},
+		"Saturday": {
+			"start": -1,
+			"end": -1
+		},
+		"Sunday": {
+			"start": -1,
+			"end": -1
+		}
+	},
+	"zoes-bagels": {
+		"display_name": "Zoe's Bookside Bagels",
+		"Monday": {
+			"start": 730,
+			"end": 2300,
+		},
+		"Tuesday": {
+			"start": 730,
+			"end": 2300,
+		},
+		"Wednesday": {
+			"start": 730,
+			"end": 2300,
+		},
+		"Thursday": {
+			"start": 730,
+			"end": 2300,
+		},
+		"Friday": {
+			"start": 730,
+			"end": 1700,
+		},
+		"Saturday": {
+			"start": 1100,
+			"end": 1700,
+		},
+		"Sunday": {
+			"start": 1200,
+			"end": 2300,
+		}
+	},
+	"rocks-cafe": {
+		"display_name": "Rock's Edge Cafe",
+		"Monday": {
+			"start": 730,
+			"end": 2000
+		},
+		"Tuesday": {
+			"start": 730,
+			"end": 2000
+		},
+		"Wednesday": {
+			"start": 730,
+			"end": 2000
+		},
+		"Thursday": {
+			"start": 730,
+			"end": 2000
+		},
+		"Friday": {
+			"start": 730,
+			"end": 1700
+		},
+		"Saturday": {
+			"start": -1,
+			"end": -1
+		},
+		"Sunday": {
+			"start": -1,
+			"end": -1
+		}
+	},
+	
+}
