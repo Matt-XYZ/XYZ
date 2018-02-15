@@ -8,6 +8,10 @@ window.onload = function() {
 	windowOnload();
 }
 function windowOnload() {
+
+	//$("#debug").text(JSON.atrium_subway.Monday.start);
+
+
 	opennow = [];
 	comingup = [];
 	openIndex = 0;
@@ -21,7 +25,7 @@ function windowOnload() {
 	setTimeout(function() {
 		$("#loader").css("display", "none");
 		$("#loader2").css("display", "none");
-		findOpen(wkday);
+		printOpen(wkday);
 
 		// keep refresh button disabled until initial load completes
 		$("#refresh-link").removeClass("disabled");
@@ -101,85 +105,13 @@ function calcTime(city, offset) {
 	wkday = dayWeek[nd.getDay()][1];
 
 	if (getAllUrlParams().mode == "debug") {
+        wkday = prompt("Enter weekday");
 		shortTime = prompt("Enter time");
-		wkday = prompt("Enter weekday");
-		return "<span style=\"color: red;\">Debugging: " + wkday + ", " +  shortTime + "</span>";
+		return "<span style=\"color: red;\">Debugging: " + wkday + ", " +  convertToTime(shortTime) + "</span>";
 	}
 
     // return time as a string
     return "WWU Dining locations open as of " + wkday + ", " +  toTwelveHr(nd.getHours()) + ":" + pad(nd.getMinutes()) + " " + AMPM(fullHour);
-}
-
-function findOpen(weekday) {
-
-	var locations = [];
-
-	// Monday through Thursday
-	if (weekday == "Monday" || weekday == "Tuesday" || weekday == "Wednesday" || weekday == "Thursday") {
-		locations = [["Ridgeway Commons (Breakfast)", 700, 1100, "r-commons"], ["Ridgeway Commons (Lunch)", 1100, 1330, "r-commons"], ["Ridgeway Commons (Lite Lunch)", 1330, 1700, "r-commons"],
-							["Ridgeway Commons (Dinner)", 1700, 1930, "r-commons"], ["Ridgeway Commons (Late Night)", 2100, 2230, "r-commons"],
-
-						["Viking Commons (Breakfast)", 700, 1100, "v-commons"], ["Viking Commons (Lunch)", 1100, 1330, "v-commons"], ["Viking Commons (Lite Lunch)", 1330, 1700, "v-commons"],
-							["Viking Commons (Dinner)", 1700, 1930, "v-commons"], ["Viking Commons (Late Night)", 2100, 2230, "v-commons"],
-
-						["Fairhaven Commons (Breakfast)", 700, 1100, "f-commons"], ["Fairhaven Commons (Lunch)", 1100, 1330, "f-commons"], ["Fairhaven Commons (Lite Lunch)", 1330, 1700, "f-commons"],
-							["Fairhaven Commons (Dinner)", 1700, 1930, "f-commons"], ["Fairhaven Commons (Late Night)", 2100, 2230, "f-commons"],
-
-
-					["VU Cafe", 730, 1900, "vu-cafe"], ["VU Market", 730, 1900, "vu-market"], ["Subway @ VU", 730, 1900, "vu-subway"], ["Panda Express @ VU", 1030, 1900, "vu-pexpress"], ["Underground Coffeehouse", 900, 2200, "coffeehouse"],
-					["Miller Market", 730, 1800, "miller-market"], ["Zoe's Bookside Bagels", 730, 2300, "zoes-bagels"], ["Rock's Edge Cafe", 730, 2000, "rocks-cafe"], ["POD Market @ The Atrium", 730, 1800, "pod-market"], ["Freshens Fresh Food Studio", 800, 1700, "freshens"],
-					["Starbucks @ The Atrium", 730, 1800, "atrium-starbucks"], ["Topio's @ The Atrium", 1030, 1700, "atrium-topios"], ["Subway @ The Atrium", 730, 1700, "atrium-subway"], ["BT Station", 1100, 2300, "bt-station"],
-					["The Haven", 1000, 2300, "haven"]];
-	}
-
-	// Friday
-	else if (weekday == "Friday") {
-		locations = [["Ridgeway Commons (Breakfast)", 700, 1100, "r-commons"], ["Ridgeway Commons (Lunch)", 1100, 1330, "r-commons"], ["Ridgeway Commons (Lite Lunch)", 1330, 1700, "r-commons"],
-							["Ridgeway Commons (Dinner)", 1700, 1830, "r-commons"], ["Ridgeway Commons (Late Night)", 2030, 2200, "r-commons"],
-
-						["Viking Commons (Breakfast)", 700, 1100, "v-commons"], ["Viking Commons (Lunch)", 1100, 1330, "v-commons"], ["Viking Commons (Lite Lunch)", 1330, 1700, "v-commons"],
-							["Viking Commons (Dinner)", 1700, 1830, "v-commons"], ["Viking Commons (Late Night)", 2030, 2200, "v-commons"],
-
-						["Fairhaven Commons (Breakfast)", 700, 1100, "f-commons"], ["Fairhaven Commons (Lunch)", 1100, 1330, "f-commons"], ["Fairhaven Commons (Lite Lunch)", 1330, 1700, "f-commons"],
-							["Fairhaven Commons (Dinner)", 1700, 1830, "f-commons"], ["Fairhaven Commons (Late Night)", 2030, 2200, "f-commons"],
-
-					["VU Cafe", 730, 1900, "vu-cafe"], ["VU Market", 730, 1900, "vu-market"], ["Subway @ VU", 730, 1900, "vu-subway"], ["Panda Express @ VU", 1030, 1900, "vu-pexpress"], ["Underground Coffeehouse", 900, 2000, "coffeehouse"],
-					["Miller Market", 730, 1700, "miller-market"], ["Zoe's Bookside Bagels", 730, 1700, "zoes-bagels"], ["Rock's Edge Cafe", 730, 1700, "rocks-cafe"],["POD Market @ The Atrium", 730, 1630, "pod-market"], ["Freshens Fresh Food Studio", 800, 1700, "freshens"],
-					["Starbucks @ The Atrium", 730, 1650, "atrium-starbucks"], ["Topio's @ The Atrium", 1030, 1430, "atrium-topios"], ["Subway @ The Atrium", 730, 1430, "atrium-subway"], ["BT Station", 1100, 1700, "bt-station"], ["The Haven", 1000, 1700, "haven"]];
-	}
-
-	// Saturday
-	else if (weekday == "Saturday") {
-		locations = [["Ridgeway Commons (Breakfast)", -1, -1, "r-commons"], ["Ridgeway Commons (Brunch)", 1000, 1330, "r-commons"], ["Ridgeway Commons (Lite Lunch)", -1, -1, "r-commons"],
-							["Ridgeway Commons (Dinner)", 1700, 1830, "r-commons"], ["Ridgeway Commons (Late Night)", 2030, 2200, "r-commons"],
-
-						["Viking Commons (Breakfast)", -1, -1, "v-commons"], ["Viking Commons (Brunch)", 1000, 1330, "v-commons"], ["Viking Commons (Lite Lunch)", -1, -1, "v-commons"],
-							["Viking Commons (Dinner)", 1700, 1830, "v-commons"], ["Viking Commons (Late Night)", 2030, 2200, "v-commons"],
-
-						["Fairhaven Commons (Breakfast)", -1, -1, "f-commons"], ["Fairhaven Commons (Brunch)", 1000, 1330, "f-commons"], ["Fairhaven Commons (Lite Lunch)", -1, -1, "f-commons"],
-							["Fairhaven Commons (Dinner)", 1700, 1830, "f-commons"], ["Fairhaven Commons (Late Night)", 2030, 2200, "f-commons"],
-
-					["VU Cafe", 900, 1300, "vu-cafe"], ["VU Market", 1100, 1900, "vu-market"], ["Subway @ VU", 1100, 1900, "vu-subway"], ["Panda Express @ VU", -1, -1, "vu-pexpress"], ["Underground Coffeehouse", -1, -1, "coffeehouse"],
-					["Miller Market", -1, -1, "miller-market"], ["Zoe's Bookside Bagels", 1100, 1700, "zoes-bagels"], ["Rock's Edge Cafe", -1, -1, "rocks-cafe"],["POD Market @ The Atrium", -1, -1, "pod-market"], ["Freshens Fresh Food Studio", -1, -1, "freshens"],
-					["Starbucks @ The Atrium", -1, -1, "atrium-starbucks"], ["Topio's @ The Atrium", -1, -1, "atrium-topios"], ["Subway @ The Atrium", -1, -1, "atrium-subway"], ["BT Station", -1, -1, "bt-station"], ["The Haven", 1400, 2000, "haven"]];
-	}
-
-	// Sunday
-	else if (weekday == "Sunday") {
-		locations = [["Ridgeway Commons (Breakfast)", -1, -1, "r-commons"], ["Ridgeway Commons (Brunch)", 1000, 1330, "r-commons"], ["Ridgeway Commons (Lite Lunch)", -1, -1, "r-commons"],
-							["Ridgeway Commons (Dinner)", 1700, 1830, "r-commons"], ["Ridgeway Commons (Late Night)", 2100, 2230, "r-commons"],
-
-						["Viking Commons (Breakfast)", -1, -1, "v-commons"], ["Viking Commons (Brunch)", 1000, 1330, "v-commons"], ["Viking Commons (Lite Lunch)", -1, -1, "v-commons"],
-							["Viking Commons (Dinner)", 1700, 1830, "v-commons"], ["Viking Commons (Late Night)", 2100, 2230, "v-commons"],
-
-						["Fairhaven Commons (Breakfast)", -1, -1, "f-commons"], ["Fairhaven Commons (Brunch)", 1000, 1330, "f-commons"], ["Fairhaven Commons (Lite Lunch)", -1, -1, "f-commons"],
-							["Fairhaven Commons (Dinner)", 1700, 1830, "f-commons"], ["Fairhaven Commons (Late Night)", 2100, 2230, "f-commons"],
-
-					["VU Café", -1, -1, "vu-cafe"], ["VU Market", 1100, 1900, "vu-market"], ["Subway @ VU", 1100, 1900, "vu-subway"], ["Panda Express @ VU", -1, -1 ,"vu-pexpress"], ["Underground Coffeehouse", -1, -1, "coffeehouse"],
-					["Miller Market", -1, -1, "miller-market"], ["Zoe's Bookside Bagels", 1200, 2300, "zoes-bagels"], ["Rock's Edge Café", -1, -1, "rocks-cafe"],["POD Market @ The Atrium", -1, -1, "pod-market"], ["Freshens Fresh Food Studio", -1, -1, "freshens"],
-					["Starbucks @ The Atrium", -1, -1, "atrium-starbucks"], ["Topio's @ The Atrium", -1, -1, "atrium-topios"], ["Subway @ The Atrium", -1, -1, "atrium-subway"], ["BT Station", -1, -1, "bt-station"], ["The Haven", 1800, 2300, "haven"]];
-	}
-	printOpen(locations);
 }
 
 // Add an amount of minutes to a number so that it rolls over at 60, rather than 100
@@ -205,18 +137,19 @@ function convertToTime(value) {
 }
 
 
-function printOpen(list) {
-	for (var i = 0; i < list.length; i++) {
-		if (shortTime >= list[i][1] && shortTime < list[i][2]) {
-			opennow.push([ [list[i][2]], "<p class=" + list[i][3] + ">" + list[i][0] + "<a id=" + list[i][3] + " href='#' onclick='return false;' class='imgHover'><sup>(?)</sup></a><span>Closes at " + convertToTime(list[i][2]) + "</span></p>"]);
+function printOpen(wkday) {
+	$.each(JSON, function(k, v) {
+		if (shortTime >= v[wkday].start && shortTime < v[wkday].end) {
+			opennow.push([v[wkday].end, "<p class=" + v.alias + ">" + v.display_name + "<a id=" + v.alias + " href='#' onclick='return false;' class='imgHover'><sup>(?)</sup></a><span>Closes at " + convertToTime(v[wkday].end) + "</span></p>"]);
 			openIndex++;
 		}
 
-		else if (shortTime < list[i][1] && addTime(shortTime, 120) >= list[i][1]) {
-			comingup.push([ [list[i][1]] , "<p class=" + list[i][3] + ">" + list[i][0] + "<a id=" + list[i][3] + " href='#' onclick='return false;' class='imgHover'><sup>(?)</sup></a><span>Opens at " + convertToTime(list[i][1]) + "</span></p>", ]);
+		else if (shortTime < v[wkday].start && addTime(shortTime, 120) >= v[wkday].start) {
+			comingup.push([v[wkday].start , "<p class=" + v.alias + ">" + v.display_name + "<a id=" + v.alias + " href='#' onclick='return false;' class='imgHover'><sup>(?)</sup></a><span>Opens at " + convertToTime(v[wkday].start) + "</span></p>", ]);
 			comingUpIndex++;
 		}
-	}
+	});
+
 	for (var index = 0; index < opennow.length; index++) {
 		// sort the array of open locations
 		opennow.sort();
@@ -258,18 +191,18 @@ function printOpen(list) {
 }
 
 function getMapEmbed(location) {
-	if (location == "vu-cafe" || location == "coffeehouse") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.6262630669914!2d-122.48757834170385!3d48.7388727637146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzE5LjkiTiAxMjLCsDI5JzExLjMiVw!5e0!3m2!1sen!2sus!4v1518138063732";
-	else if (location == "vu-subway" || location == "vu-pexpress" || location == "vu-market") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.6227558950666!2d-122.48739034170386!3d48.73900676370991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzIwLjQiTiAxMjLCsDI5JzEwLjciVw!5e0!3m2!1sen!2sus!4v1518138286088";
-	else if (location == "miller-market") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.6836593040343!2d-122.48610934170391!3d48.736679763791656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzEyLjAiTiAxMjLCsDI5JzA2LjEiVw!5e0!3m2!1sen!2sus!4v1518137244822";
-	else if (location == "zoes-bagels") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d657.8246067271543!2d-122.48631317073745!3d48.73799588316775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzE2LjgiTiAxMjLCsDI5JzA4LjgiVw!5e0!3m2!1sen!2sus!4v1518138441509";
-	else if (location == "rocks-cafe") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.8129092870122!2d-122.4893911703614!3d48.731741097582834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQzJzU0LjMiTiAxMjLCsDI5JzE5LjQiVw!5e0!3m2!1sen!2sus!4v1518138528635";
-	else if (location == "bt-station") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.8503675283262!2d-122.48683921055277!3d48.730309741303124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQzJzQ5LjEiTiAxMjLCsDI5JzA4LjciVw!5e0!3m2!1sen!2sus!4v1518138755478";
+	if (location == "vu_cafe" || location == "coffeehouse") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.6262630669914!2d-122.48757834170385!3d48.7388727637146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzE5LjkiTiAxMjLCsDI5JzExLjMiVw!5e0!3m2!1sen!2sus!4v1518138063732";
+	else if (location == "vu_subway" || location == "vu_pexpress" || location == "vu_market") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.6227558950666!2d-122.48739034170386!3d48.73900676370991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzIwLjQiTiAxMjLCsDI5JzEwLjciVw!5e0!3m2!1sen!2sus!4v1518138286088";
+	else if (location == "miller_market") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.6836593040343!2d-122.48610934170391!3d48.736679763791656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzEyLjAiTiAxMjLCsDI5JzA2LjEiVw!5e0!3m2!1sen!2sus!4v1518137244822";
+	else if (location == "zoes_bagels") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d657.8246067271543!2d-122.48631317073745!3d48.73799588316775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzE2LjgiTiAxMjLCsDI5JzA4LjgiVw!5e0!3m2!1sen!2sus!4v1518138441509";
+	else if (location == "rocks_cafe") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.8129092870122!2d-122.4893911703614!3d48.731741097582834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQzJzU0LjMiTiAxMjLCsDI5JzE5LjQiVw!5e0!3m2!1sen!2sus!4v1518138528635";
+	else if (location == "bt_station") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.8503675283262!2d-122.48683921055277!3d48.730309741303124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQzJzQ5LjEiTiAxMjLCsDI5JzA4LjciVw!5e0!3m2!1sen!2sus!4v1518138755478";
 	else if (location == "haven") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d657.9717361183431!2d-122.48775317073753!3d48.72675188336555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQzJzM2LjMiTiAxMjLCsDI5JzEzLjkiVw!5e0!3m2!1sen!2sus!4v1518139126220";
-	else if (location == "atrium-starbucks" || location == "atrium-topios" || location == "atrium-subway" || location == "pod-market") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.7594303193364!2d-122.48678063718938!3d48.73378458431952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzAxLjYiTiAxMjLCsDI5JzA4LjkiVw!5e0!3m2!1sen!2sus!4v1518137780549";
+	else if (location == "atrium_starbucks" || location == "atrium_topios" || location == "atrium_subway" || location == "pod_market") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.7594303193364!2d-122.48678063718938!3d48.73378458431952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzAxLjYiTiAxMjLCsDI5JzA4LjkiVw!5e0!3m2!1sen!2sus!4v1518137780549";
 	else if (location == "freshens") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.7002519643306!2d-122.48697793225266!3d48.73604577601202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzA5LjgiTiAxMjLCsDI5JzA5LjIiVw!5e0!3m2!1sen!2sus!4v1518137908653";
-	else if (location == "f-commons") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.8503675283262!2d-122.48683921055277!3d48.730309741303124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQzJzQ5LjEiTiAxMjLCsDI5JzA4LjciVw!5e0!3m2!1sen!2sus!4v1518138755478";
-	else if (location == "r-commons") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d657.875052822489!2d-122.4906651707535!3d48.73414088323561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzAyLjkiTiAxMjLCsDI5JzI0LjQiVw!5e0!3m2!1sen!2sus!4v1518139499053"
-	else if (location == "v-commons") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d657.8088899681655!2d-122.48582617075354!3d48.739196883146704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzIxLjEiTiAxMjLCsDI5JzA3LjAiVw!5e0!3m2!1sen!2sus!4v1518139543466";
+	else if (location == "f_commons") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.8503675283262!2d-122.48683921055277!3d48.730309741303124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQzJzQ5LjEiTiAxMjLCsDI5JzA4LjciVw!5e0!3m2!1sen!2sus!4v1518138755478";
+	else if (location == "r_commons") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d657.875052822489!2d-122.4906651707535!3d48.73414088323561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzAyLjkiTiAxMjLCsDI5JzI0LjQiVw!5e0!3m2!1sen!2sus!4v1518139499053"
+	else if (location == "v_commons") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d657.8088899681655!2d-122.48582617075354!3d48.739196883146704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzIxLjEiTiAxMjLCsDI5JzA3LjAiVw!5e0!3m2!1sen!2sus!4v1518139543466";
 	else return "https://placehold.it/640x360?text=Error+loading+map";
 }
 
