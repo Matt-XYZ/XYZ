@@ -17,7 +17,8 @@ function windowOnload() {
 	openIndex = 0;
 	comingUpIndex = 0;
 
-	$("#timeDisplay").html(calcTime("Bellingham", "+8"));
+	// use +7 during DST, +8 otherwise
+	$("#timeDisplay").html(calcTime("Bellingham", "+7"));
 
 	$("#output").html("<h3>Open Locations</h3><img id='loader' src='spinner.gif' />");
 	$("#output2").html("<h3>Coming Up</h3><img id='loader2' src='spinner.gif' />");
