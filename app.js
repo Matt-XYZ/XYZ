@@ -38,7 +38,7 @@ function windowOnload() {
 		if (comingup.length < 1) {
 			$("#output2").append("<p><i>Nothing in the next 2 hours</i></p>");
 		}
-	}, 1500);
+	}, 500);
 } // end windowOnload
 
 
