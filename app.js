@@ -7,10 +7,23 @@ var comingup = [];
 window.onload = function() {
 	windowOnload();
 }
-function windowOnload() {
+function windowOnload(state) {
 
 	//$("#debug").text(JSON.atrium_subway.Monday.start);
 
+	var returnRate;
+	if (state != "refresh") {
+		returnRate = 500;
+	}
+	else {
+		returnRate = 1500;
+		setTimeout(function() {
+			// let the refresh icon make a full rotation
+			$("#refreshIcon").removeClass("fa-spin");
+			// keep refresh button disabled until initial load completes
+			$("#refresh-link").removeClass("disabled");
+		}, 1500);
+	}
 
 	opennow = [];
 	comingup = [];
@@ -20,30 +33,36 @@ function windowOnload() {
 	// use +7 during DST, +8 otherwise
 	$("#timeDisplay").html(calcTime("Bellingham", "+7"));
 
-	$("#output").html("<h3>Open Locations</h3><img id='loader' src='spinner.gif' />");
-	$("#output2").html("<h3>Coming Up</h3><img id='loader2' src='spinner.gif' />");
+	$("#output").html("<h3>Open Locations</h3><div id='output-inner'></div>");
+	$("#output2").html("<h3>Coming Up</h3><div id='output2-inner'></div>");
+
 
 	setTimeout(function() {
-		$("#loader").css("display", "none");
-		$("#loader2").css("display", "none");
 		printOpen(wkday);
 
-		// keep refresh button disabled until initial load completes
-		$("#refresh-link").removeClass("disabled");
-
 		if (opennow.length < 1) {
-			$("#output").append("<p><i>Nothing right now</i></p>");
+			$("#output-inner").append("<p><i>Nothing right now</i></p>");
 		}
 
 		if (comingup.length < 1) {
-			$("#output2").append("<p><i>Nothing in the next 2 hours</i></p>");
+			$("#output2-inner").append("<p><i>Nothing in the next 2 hours</i></p>");
 		}
-	}, 500);
+
+		$("#output-inner, #output2-inner").slideToggle();
+		// remove disabled class from refresh button if this is a page load
+		if (state != "refresh") $("#refresh-link").removeClass("disabled");
+	}, returnRate);
 } // end windowOnload
 
 
 function refresh() {
-	windowOnload();
+	$("#output-inner, #output2-inner").slideToggle();
+	$("#refreshIcon").addClass("fa-spin");
+
+	setTimeout(function() {
+		windowOnload("refresh");
+	}, 500);
+
 
 	// add disabled class on button click (will be removed when windowOnload finishes executing)
 	$("#refresh-link").addClass("disabled");
@@ -156,7 +175,7 @@ function printOpen(wkday) {
 		opennow.sort();
 
 		// append current item to the HTML output
-		$("#output").append(opennow[index][1]);
+		$("#output-inner").append(opennow[index][1]);
 	}
 
 
@@ -165,7 +184,7 @@ function printOpen(wkday) {
 		comingup.sort();
 
 		// append current item to the HTML output2
-		$("#output2").append(comingup[index][1]);
+		$("#output2-inner").append(comingup[index][1]);
 	}
 
 	// update headings with indexes
