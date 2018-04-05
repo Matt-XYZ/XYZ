@@ -119,12 +119,12 @@ var JSON = {
 			"end": 1330
 		},
 		"Saturday": {
-			"start": 1000,
-			"end": 1330
+			"start": -1,
+			"end": -1
 		},
 		"Sunday": {
-			"start": 1000,
-			"end": 1330
+			"start": -1,
+			"end": -1
 		}
 	},
 	"r_commons_lun": {
@@ -584,32 +584,34 @@ var JSON = {
 		"alias": "vu_pexpress",
 		"display_name": "Panda Express @ VU",
 		"Monday": {
-			"start": 1030,
+			"start": 730,
 			"end": 1900
 		},
 		"Tuesday": {
-			"start": 1030,
+			"start": 730,
 			"end": 1900
 		},
+
 		"Wednesday": {
-			"start": 1030,
+			"start": 730,
 			"end": 1900
 		},
+
 		"Thursday": {
-			"start": 1030,
+			"start": 730,
 			"end": 1900
 		},
 		"Friday": {
-			"start": 1030,
+			"start": 730,
 			"end": 1900
 		},
 		"Saturday": {
-			"start": -1,
-			"end": -1
+			"start": 1100,
+			"end": 1900
 		},
 		"Sunday": {
-			"start": -1,
-			"end": -1
+			"start": 1100,
+			"end": 1900
 		}
 	},
 	"coffeehouse": {
@@ -617,23 +619,23 @@ var JSON = {
 		"display_name": "Underground Coffeehouse",
 		"Monday": {
 			"start": 900,
-			"end": 2200
+			"end": 2100
 		},
 		"Tuesday": {
 			"start": 900,
-			"end": 2200
+			"end": 2100
 		},
 		"Wednesday": {
 			"start": 900,
-			"end": 2200
+			"end": 2100
 		},
 		"Thursday": {
 			"start": 900,
-			"end": 2200
+			"end": 2100
 		},
 		"Friday": {
 			"start": 900,
-			"end": 2200
+			"end": 2000
 		},
 		"Saturday": {
 			"start": -1,
@@ -712,23 +714,23 @@ var JSON = {
 		"alias": "rocks_cafe",
 		"display_name": "Rock's Edge Cafe",
 		"Monday": {
-			"start": 730,
+			"start": 800,
 			"end": 2000
 		},
 		"Tuesday": {
-			"start": 730,
+			"start": 800,
 			"end": 2000
 		},
 		"Wednesday": {
-			"start": 730,
+			"start": 800,
 			"end": 2000
 		},
 		"Thursday": {
-			"start": 730,
+			"start": 800,
 			"end": 2000
 		},
 		"Friday": {
-			"start": 730,
+			"start": 800,
 			"end": 1700
 		},
 		"Saturday": {
@@ -776,23 +778,23 @@ var JSON = {
 		"alias": "freshens",
 		"display_name": "Freshens Fresh Food Studio",
 		"Monday": {
-			"start": 800,
+			"start": 900,
 			"end": 1700
 		},
 		"Tuesday": {
-			"start": 800,
+			"start": 900,
 			"end": 1700
 		},
 		"Wednesday": {
-			"start": 800,
+			"start": 900,
 			"end": 1700
 		},
 		"Thursday": {
-			"start": 800,
+			"start": 900,
 			"end": 1700
 		},
 		"Friday": {
-			"start": 800,
+			"start": 900,
 			"end": 1700
 		},
 		"Saturday": {
