@@ -63,9 +63,9 @@ span#refreshIcon {
     font-size: 1em;
     padding-top: 1em;
 }
-img#refreshSpinner {
-    height: 1em;
-    width: 1em;
+.fa-spin {
+  -webkit-animation: fa-spin 1s infinite linear;
+  animation: fa-spin 1s infinite linear;
 }
 #refresh {
     display: block;

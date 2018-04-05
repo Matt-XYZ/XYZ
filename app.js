@@ -16,13 +16,13 @@ function windowOnload(state) {
 		returnRate = 500;
 	}
 	else {
-		returnRate = 1500;
+		returnRate = 0;
 		setTimeout(function() {
 			// let the refresh icon make a full rotation
 			$("#refreshIcon").removeClass("fa-spin");
 			// keep refresh button disabled until initial load completes
 			$("#refresh-link").removeClass("disabled");
-		}, 1500);
+		}, 500);
 	}
 
 	opennow = [];
