@@ -138,6 +138,9 @@ span#refreshIcon {
     }
 }
 @media (max-width: 900px) {
+    body {
+        background-attachment: scroll !important;
+    }
     #output, #output2 {
         width: 90%;
     }
