@@ -8,6 +8,9 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
+::-webkit-scrollbar { 
+    display: none; 
+}
 div#body {
     display: block;
     width: 70%;
