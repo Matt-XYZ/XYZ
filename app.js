@@ -133,7 +133,7 @@ function calcTime(city, offset) {
 	}
 
     // return time as a string
-    return "WWU Dining locations open as of " + wkday + ", " +  toTwelveHr(nd.getHours()) + ":" + pad(nd.getMinutes()) + " " + AMPM(fullHour);
+    return wkday + ", " +  toTwelveHr(nd.getHours()) + ":" + pad(nd.getMinutes()) + " " + AMPM(fullHour);
 }
 
 // Add an amount of minutes to a number so that it rolls over at 60, rather than 100

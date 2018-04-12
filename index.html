@@ -1,5 +1,5 @@
-<!doctype html>
-<html>
+<!DOCTYPE HTML>
+<html lang="en">
 <head>
 	<title>WWU Open Dining Locations</title>
 	<script src="locations.js?revision=4-4-2018-1" type="text/javascript"></script>
@@ -15,11 +15,12 @@
 </head>
 <body>
 	<div id="body">
-		<h1 id="timeDisplay"></h1>
+		<h1 class="wwuhungry-header">wwu<span>hungry</span></h1>
+		<h3 id="timeDisplay"></h3>
 		<div id="locationImg">
             <div id="modalDiv" class="modalDiv modal hidden-phone">
                 <span id="close" class="close">&times;</span>
-				<iframe id="modalImg" src="" frameborder="0" style="border:0" allowfullscreen></iframe>
+				<iframe id="modalImg" src="" frameborder="0" allowfullscreen></iframe>
             </div>
 		</div>
 		<div id="refresh">
@@ -30,11 +31,15 @@
 
 		<div id="output"></div>
 		<div id="output2"></div>
-		<h1 id="debug" style="color: red;"></h1>
+		<h1 id="debug"></h1>
 	</div>
 
 	<footer>
-		<p>Copyright &copy; Matt Jones 2018. | Hours last updated 4/4/2018. | <a href="https://github.com/matt-t-jones/wwu-dining/issues" target="_blank">Report an inaccuracy</a></p>
+		<p>
+			<span>Copyright &copy; Matt Jones 2018</span>
+			<span>Hours last updated 4/4/2018</span>
+			<span><a href="https://github.com/matt-t-jones/wwu-dining/issues" target="_blank">Report an inaccuracy</a></span>
+		</p>
 	</footer>
 </body>
 </html>
