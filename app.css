@@ -8,8 +8,8 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
-::-webkit-scrollbar { 
-    display: none; 
+::-webkit-scrollbar {
+    display: none;
 }
 div#body {
     display: block;
@@ -60,6 +60,11 @@ span {
 	display: block;
 	font-size: 0.6em;
 	padding-top: 0.1em;
+}
+span.special {
+    font-weight: bold;
+    font-size: 0.75em;
+    margin: 1em;
 }
 span#refreshIcon {
     display: inline;

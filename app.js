@@ -45,7 +45,9 @@ function windowOnload(state) {
 		}
 
 		if (comingup.length < 1) {
-			$("#output2-inner").append("<p><i>Nothing in the next 2 hours</i></p>");
+			$("#output2-inner").append("<p><i>Nothing in the next 2 hours</i></p>"
+			+ "<span>Find this site useful? Consider using my Uber Eats code:</span><span class=\"special\">eats-mattj12786ui</span>"
+			+ "<span>Find this site <i>really</i> useful?</span><span class=\"special\"><a href=\"https://paypal.me/mattj0nes\" target=\"_blank\">paypal.me/mattj0nes</span>");
 		}
 
 		$("#output-inner, #output2-inner").slideToggle();
@@ -127,7 +129,7 @@ function calcTime(city, offset) {
 	if (getAllUrlParams().mode == "debug") {
         wkday = prompt("Enter weekday");
 		shortTime = prompt("Enter time");
-		return "<span style=\"color: red;\">Debugging: " + wkday + ", " +  convertToTime(shortTime) + "</span>";
+		return "<span style=\"color: red;\">Debugging: " + wkday + ", " +  convertToTime(shortTime) + "</span><span><a href=\"./\">Exit debug mode</a>";
 	}
 
     // return time as a string
