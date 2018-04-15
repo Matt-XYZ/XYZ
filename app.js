@@ -210,6 +210,10 @@ function printOpen(wkday) {
 		$("#modalDiv").css("display", "none");
 	});
 
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip();
+	});
+
 }
 
 function getMapEmbed(location) {

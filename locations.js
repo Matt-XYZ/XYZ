@@ -582,7 +582,7 @@ var JSON = {
 	},
 	"vu_pexpress": {
 		"alias": "vu_pexpress",
-		"display_name": "Panda Express @ VU",
+		"display_name": "<i class='fa fa-exclamation-triangle' style='color: red' data-toggle='tooltip' data-placement='top' title='May be inaccurate. Reliable hours for this location are currently unavailable.' /> Panda Express @ VU",
 		"Monday": {
 			"start": 730,
 			"end": 1900
