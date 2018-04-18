@@ -191,7 +191,7 @@ var JSON = {
 			"end": 1330
 		}
 	},
-	"f_commons_lun": {
+	"f_commons_ltl": {
 		"alias": "f_commons",
 		"display_name": "Fairhaven Commons (Lite Lunch)",
 		"Monday": {
@@ -223,7 +223,7 @@ var JSON = {
 			"end": -1
 		}
 	},
-	"r_commons_lun": {
+	"r_commons_ltl": {
 		"alias": "r_commons",
 		"display_name": "Ridgeway Commons (Lite Lunch)",
 		"Monday": {
@@ -255,7 +255,7 @@ var JSON = {
 			"end": -1
 		}
 	},
-	"v_commons_lun": {
+	"v_commons_ltl": {
 		"alias": "v_commons",
 		"display_name": "Viking Commons (Lite Lunch)",
 		"Monday": {
