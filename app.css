@@ -179,10 +179,12 @@ span#refreshIcon {
 
 @media (max-width: 1200px) {
     div#body {
-        width: 99% !important;
+        width: 100% !important;
+        border-radius: 0 !important;
     }
 	footer {
-		width: 99% !important;
+		width: 100% !important;
+        border-radius: 0 !important;
     }
     h1.wwuhungry-header {
         font-size: 48px !important;
@@ -204,6 +206,7 @@ span#refreshIcon {
 @media (max-width: 900px) {
     body {
         background-attachment: scroll !important;
+        background-size: auto !important;
     }
     #output, #output2 {
         width: 90%;
