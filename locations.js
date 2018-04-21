@@ -546,8 +546,8 @@ var JSON = {
 			"end": 1900
 		}
 	},
-	"vu_subway": {
-		"alias": "vu_subway",
+	"subway_vu": {
+		"alias": "subway_vu",
 		"display_name": "Subway @ VU",
 		"Monday": {
 			"start": 730,
@@ -615,7 +615,7 @@ var JSON = {
 		}
 	},
 	"coffeehouse": {
-		"alias": "coffeehouse",
+		"alias": "underground_coffeehouse",
 		"display_name": "Underground Coffeehouse",
 		"Monday": {
 			"start": 900,
@@ -806,8 +806,8 @@ var JSON = {
 			"end": -1
 		}
 	},
-	"atrium_starbucks": {
-		"alias": "atrium_starbucks",
+	"starbucks_atrium": {
+		"alias": "starbucks_atrium",
 		"display_name": "Starbucks @ The Atrium",
 		"Monday": {
 			"start": 730,
@@ -838,8 +838,8 @@ var JSON = {
 			"end": -1
 		}
 	},
-	"atrium_topios": {
-		"alias": "atrium_topios",
+	"topios_atrium": {
+		"alias": "topios_atrium",
 		"display_name": "Topio's @ The Atrium",
 		"Monday": {
 			"start": 1030,
@@ -870,8 +870,8 @@ var JSON = {
 			"end": -1
 		}
 	},
-	"atrium_subway": {
-		"alias": "atrium_subway",
+	"subway_atrium": {
+		"alias": "subway_atrium",
 		"display_name": "Subway @ The Atrium",
 		"Monday": {
 			"start": 730,
@@ -934,8 +934,8 @@ var JSON = {
 			"end": -1
 		}
 	},
-	"haven": {
-		"alias": "haven",
+	"the_haven": {
+		"alias": "the_haven",
 		"display_name": "The Haven",
 		"Monday": {
 			"start": 1000,
