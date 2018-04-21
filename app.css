@@ -208,8 +208,14 @@ span#refreshIcon {
         background-attachment: scroll !important;
         background-size: auto !important;
     }
+    div#body {
+        margin-top: 0;
+    }
     #output, #output2 {
         width: 90%;
+    }
+    footer {
+        margin-bottom: 0;
     }
     footer span {
         display: block !important;
