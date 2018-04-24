@@ -205,8 +205,8 @@ span#refreshIcon {
 }
 @media (max-width: 900px) {
     body {
-        background-attachment: scroll !important;
-        background-size: auto !important;
+        background-attachment: fixed !important;
+        background-size: 1600px !important;
     }
     div#body {
         margin-top: 0;
