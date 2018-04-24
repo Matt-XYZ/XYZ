@@ -206,7 +206,7 @@ span#refreshIcon {
 @media (max-width: 900px) {
     body {
         background-attachment: fixed !important;
-        background-size: 1600px !important;
+        background-size: 2500px !important;
     }
     div#body {
         margin-top: 0;
