@@ -207,6 +207,7 @@ function printOpen(wkday) {
 	});
 
 	$("#modalDiv").click(function(event) {
+		$("#modalImg").attr("src", "");
 		$("#modalDiv").css("display", "none");
 	});
 
