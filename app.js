@@ -207,24 +207,13 @@ function printOpen(wkday) {
 	});
 
 	$("#modalDiv").click(function(event) {
-		$("#modalImg").attr("src", "");
 		$("#modalDiv").css("display", "none");
-	});
-
-	$("#report-issue").click(function(event) {
-		$("#modalImg").attr("src", "issue.html");
-		$("#modalDiv").css("display", "block");
 	});
 
 	$(document).ready(function(){
 	    $('[data-toggle="tooltip"]').tooltip();
 	});
 
-}
-
-function closeIframe() {
-	$("#modalImg").attr("src", "issue.html");
-	$("#modalDiv").css("display", "block");
 }
 
 function getMapEmbed(location) {
