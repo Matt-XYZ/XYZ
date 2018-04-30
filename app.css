@@ -53,6 +53,11 @@ footer {
 footer span {
     display: inline !important;
     font-size: 1em !important;
+    line-height: 1em;
+}
+footer span i {
+    font-size: 1.25em !important;
+    vertical-align: bottom;
 }
 footer span::after {
     content: " | ";
