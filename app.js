@@ -1,9 +1,9 @@
 var shortTime;
 var wkday;
 var output;
-var openIndex, comingUpIndex;
+var openIndex, openSoonIndex;
 var opennow = [];
-var comingup = [];
+var openSoon = [];
 window.onload = function() {
 	windowOnload();
 }
@@ -26,15 +26,15 @@ function windowOnload(state) {
 	}
 
 	opennow = [];
-	comingup = [];
+	openSoon = [];
 	openIndex = 0;
-	comingUpIndex = 0;
+	openSoonIndex = 0;
 
 	// use +7 during DST, +8 otherwise
 	$("#timeDisplay").html(calcTime("Bellingham", "+7"));
 
 	$("#output").html("<h3>Open Locations</h3><div id='output-inner'></div>");
-	$("#output2").html("<h3>Coming Up</h3><div id='output2-inner'></div>");
+	$("#output2").html("<h3>Opening Soon</h3><div id='output2-inner'></div>");
 
 
 	setTimeout(function() {
@@ -44,7 +44,7 @@ function windowOnload(state) {
 			$("#output-inner").append("<p><i>Nothing right now</i></p>");
 		}
 
-		if (comingup.length < 1) {
+		if (openSoon.length < 1) {
 			$("#output2-inner").append("<p><i>Nothing in the next 2 hours</i></p>"
 			+ "<span>Find this site useful? Consider using my Uber Eats code:</span><span class=\"special\">eats-mattj12786ui</span>"
 			+ "<span>Find this site <i>really</i> useful?</span><span class=\"special\"><a href=\"https://paypal.me/mattj0nes\" target=\"_blank\">paypal.me/mattj0nes</span>");
@@ -126,14 +126,17 @@ function calcTime(city, offset) {
 
 	wkday = dayWeek[nd.getDay()][1];
 
+	var displayWkDay = wkday;
+	if (displayWkDay == "Wednesday") displayWkDay = "Western Wednesday";
+
 	if (getAllUrlParams().mode == "debug") {
         wkday = prompt("Enter weekday");
 		shortTime = prompt("Enter time");
-		return "<span style=\"color: red;\">Debugging: " + wkday + ", " +  convertToTime(shortTime) + "</span><span><a href=\"./\">Exit debug mode</a>";
+		return "<span style=\"color: red;\">Debugging: " + displayWkDay + ", " +  convertToTime(shortTime) + "</span><span><a href=\"./\">Exit debug mode</a>";
 	}
 
     // return time as a string
-    return wkday + ", " +  toTwelveHr(nd.getHours()) + ":" + pad(nd.getMinutes()) + " " + AMPM(fullHour);
+    return displayWkDay + ", " +  toTwelveHr(nd.getHours()) + ":" + pad(nd.getMinutes()) + " " + AMPM(fullHour);
 }
 
 // Add an amount of minutes to a number so that it rolls over at 60, rather than 100
@@ -167,8 +170,8 @@ function printOpen(wkday) {
 		}
 
 		else if (shortTime < v[wkday].start && addTime(shortTime, 120) >= v[wkday].start) {
-			comingup.push([v[wkday].start , "<p class=" + v.alias + ">" + v.display_name + "<a id=" + v.alias + " href='#' onclick='return false;' class='imgHover'><sup>(?)</sup></a><span>Opens at " + convertToTime(v[wkday].start) + "</span></p>", ]);
-			comingUpIndex++;
+			openSoon.push([v[wkday].start , "<p class=" + v.alias + ">" + v.display_name + "<a id=" + v.alias + " href='#' onclick='return false;' class='imgHover'><sup>(?)</sup></a><span>Opens at " + convertToTime(v[wkday].start) + "</span></p>", ]);
+			openSoonIndex++;
 		}
 	});
 
@@ -181,17 +184,17 @@ function printOpen(wkday) {
 	}
 
 
-	for (var index = 0; index < comingup.length; index++) {
-		// sort the array of coming up locations
-		comingup.sort();
+	for (var index = 0; index < openSoon.length; index++) {
+		// sort the array of Opening Soon locations
+		openSoon.sort();
 
 		// append current item to the HTML output2
-		$("#output2-inner").append(comingup[index][1]);
+		$("#output2-inner").append(openSoon[index][1]);
 	}
 
 	// update headings with indexes
-	$("#output h3").text("Open Locations (" + openIndex + ")");
-	$("#output2 h3").text("Coming Up (" + comingUpIndex + ")");
+	$("#output h3").html("<b>" + openIndex + "</b> Open Locations");
+	$("#output2 h3").html("<b>" + openSoonIndex + "</b> Opening Soon");
 
 	$(".imgHover").each(function(index) {
 		$(this).click(function() {

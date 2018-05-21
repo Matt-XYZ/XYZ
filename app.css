@@ -83,20 +83,12 @@ h1 {
     text-align: center;
 }
 
-h1.wwuhungry-header {
-    font-size: 80px;
-    font-family: "Coolvetica";
-    font-weight: normal !important;
-    letter-spacing: 0.025em;
-    margin-bottom: 0;
-    color: #003f87;
+img#headerImg {
+    width: 430px;
+    height: auto;
+    margin-top: 20px;
 }
-h1.wwuhungry-header span {
-    display: inline !important;
-    font-weight: bold;
-    font-size: 1.15em;
-    color: #0083d6;
-}
+
 h3#timeDisplay {
     margin-top: 1em;
     padding-top: 0;
@@ -212,6 +204,9 @@ span#refreshIcon {
     body {
         background-attachment: fixed !important;
         background-size: 2500px !important;
+    }
+    img#headerImg {
+        width: 80%;
     }
     div#body {
         margin-top: 0;
