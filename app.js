@@ -131,6 +131,8 @@ function calcTime(city, offset) {
 
 	if (getAllUrlParams().mode == "debug") {
         wkday = prompt("Enter weekday");
+		displayWkDay = wkday;
+		if (displayWkDay == "Wednesday") displayWkDay = "Western Wednesday";
 		shortTime = prompt("Enter time");
 		return "<span style=\"color: red;\">Debugging: " + displayWkDay + ", " +  convertToTime(shortTime) + "</span><span><a href=\"./\">Exit debug mode</a>";
 	}
