@@ -63,7 +63,7 @@ function windowOnload(state) {
 		$("#output-inner, #output2-inner").slideToggle();
 		
 		// display alert if active
-		if(alert.active) {
+		if(alert.active && $("div.alert-info").css("display") == "none") {
 			$("div.alert-info").html(alert.content);
 			$("div.alert-info").slideToggle();
 		}
