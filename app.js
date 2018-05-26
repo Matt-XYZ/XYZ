@@ -4,9 +4,20 @@ var output;
 var openIndex, openSoonIndex;
 var opennow = [];
 var openSoon = [];
+
+const alert = {};
+alert.active = true;
+alert.content = "<a href='https://wwu.campusdish.com/-/media/Local/Higher-Education/GroupC/WesternWashington/Files/WEBMemorial-Dayl-Hours.ashx' target='_blank'>Click Here</a> for Memorial Day hours";
+
 window.onload = function() {
 	windowOnload();
 }
+
+function convertToURL(text) {
+	var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+	return text.replace(exp,"<a href='$1' target='_blank'>$1</a>");
+}
+
 function windowOnload(state) {
 
 	//$("#debug").text(JSON.atrium_subway.Monday.start);
@@ -46,11 +57,17 @@ function windowOnload(state) {
 
 		if (openSoon.length < 1) {
 			$("#output2-inner").append("<p><i>Nothing in the next 2 hours</i></p>"
-			+ "<span>Find this site useful? Consider using my Uber Eats code:</span><span class=\"special\">eats-mattj12786ui</span>"
-			+ "<span>Find this site <i>really</i> useful?</span><span class=\"special\"><a href=\"https://paypal.me/mattj0nes\" target=\"_blank\">paypal.me/mattj0nes</span>");
+			+ "<span>Find this site useful? Consider using my Uber Eats code:</span><span class=\"special\">eats-mattj12786ui</span>");
 		}
 
 		$("#output-inner, #output2-inner").slideToggle();
+		
+		// display alert if active
+		if(alert.active) {
+			$("div.alert-info").html(alert.content);
+			$("div.alert-info").slideToggle();
+		}
+		
 		// remove disabled class from refresh button if this is a page load
 		if (state != "refresh") $("#refresh-link").removeClass("disabled");
 	}, returnRate);
@@ -127,12 +144,10 @@ function calcTime(city, offset) {
 	wkday = dayWeek[nd.getDay()][1];
 
 	var displayWkDay = wkday;
-	if (displayWkDay == "Wednesday") displayWkDay = "Western Wednesday";
 
 	if (getAllUrlParams().mode == "debug") {
         wkday = prompt("Enter weekday");
 		displayWkDay = wkday;
-		if (displayWkDay == "Wednesday") displayWkDay = "Western Wednesday";
 		shortTime = prompt("Enter time");
 		return "<span style=\"color: red;\">Debugging: " + displayWkDay + ", " +  convertToTime(shortTime) + "</span><span><a href=\"./\">Exit debug mode</a>";
 	}

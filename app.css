@@ -29,6 +29,16 @@ div#body {
     border-top-right-radius: 0.5em;
 }
 
+div.alert {
+	display: none;
+	width: 71%;
+	margin: 20px auto;
+}
+
+div.alert a {
+	text-decoration: underline;
+}
+
 iframe#modalImg {
     border: 0;
 }
@@ -211,7 +221,7 @@ span#refreshIcon {
     div#body {
         margin-top: 0;
     }
-    #output, #output2 {
+    #output, #output2, div.alert {
         width: 90%;
     }
     footer {
