@@ -6,8 +6,8 @@ var opennow = [];
 var openSoon = [];
 
 const alert = {};
-alert.active = true;
-alert.content = "<a href='https://wwu.campusdish.com/-/media/Local/Higher-Education/GroupC/WesternWashington/Files/WEBMemorial-Dayl-Hours.ashx' target='_blank'>Click Here</a> for Memorial Day hours";
+alert.active = false;
+alert.content = "";
 
 window.onload = function() {
 	windowOnload();
