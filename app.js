@@ -6,8 +6,8 @@ var opennow = [];
 var openSoon = [];
 
 const alert = {};
-alert.active = false;
-alert.content = "";
+alert.active = true;
+alert.content = "The below hours are inaccurate for finals week. Finals week hours can be found <a href=\"https://wwu.campusdish.com/-/media/Local/Higher-Education/GroupC/WesternWashington/Files/Spring2018Dead,-a-,FinalsWebr.ashx\" target=\"_blank\">here.</a>";
 
 window.onload = function() {
 	windowOnload();
