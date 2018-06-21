@@ -148,6 +148,13 @@ span#refreshIcon {
 #output-inner, #output2-inner {
     display: none;
 }
+#output-inner div#alternativeMsg, #output2-inner div#alternativeMsg {
+	display: block;
+	margin: 10px 0;
+}
+#output-inner div#alternativeMsg a, #output2-inner div#alternativeMsg a {
+	text-decoration: underline;
+}
 #output2 {
     background-color: rgba(255, 235, 90, 0.5) !important;
     border: 1px solid rgba(255, 255, 0, 0.2) !important;

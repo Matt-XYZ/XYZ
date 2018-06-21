@@ -5,9 +5,13 @@ var openIndex, openSoonIndex;
 var opennow = [];
 var openSoon = [];
 
-const alert = {};
-alert.active = true;
-alert.content = "The below hours are inaccurate for finals week. Finals week hours can be found <a href=\"https://wwu.campusdish.com/-/media/Local/Higher-Education/GroupC/WesternWashington/Files/Spring2018Dead,-a-,FinalsWebr.ashx\" target=\"_blank\">here.</a>";
+var alert;
+alert.active = false;
+alert.content = "";
+
+var infoOutput = false;
+
+var alternativeMsg = "<a href=\"https://wwu.campusdish.com/-/media/Local/Higher-Education/GroupC/WesternWashington/Images/Df-4CsrV4AAbGXc.ashx\" target=\"_blank\">Click Here</a> for hours during intersession week.";
 
 window.onload = function() {
 	windowOnload();
@@ -49,15 +53,21 @@ function windowOnload(state) {
 
 
 	setTimeout(function() {
-		printOpen(wkday);
+		if (infoOutput) {
+			printOpen(wkday);
+		
 
-		if (opennow.length < 1) {
-			$("#output-inner").append("<p><i>Nothing right now</i></p>");
+			if (opennow.length < 1) {
+				$("#output-inner").append("<p><i>Nothing right now</i></p>");
+			}
+
+			if (openSoon.length < 1) {
+				$("#output2-inner").append("<p><i>Nothing in the next 2 hours</i></p>"
+				+ "<span>Find this site useful? Consider using my Uber Eats code:</span><span class=\"special\">eats-mattj12786ui</span>");
+			}
 		}
-
-		if (openSoon.length < 1) {
-			$("#output2-inner").append("<p><i>Nothing in the next 2 hours</i></p>"
-			+ "<span>Find this site useful? Consider using my Uber Eats code:</span><span class=\"special\">eats-mattj12786ui</span>");
+		else {
+			$("#output-inner, #output2-inner").append("<div id=\"alternativeMsg\">" + alternativeMsg + "</div>");
 		}
 
 		$("#output-inner, #output2-inner").slideToggle();
