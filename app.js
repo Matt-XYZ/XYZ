@@ -6,12 +6,12 @@ var opennow = [];
 var openSoon = [];
 
 var alert;
-alert.active = false;
-alert.content = "";
+alert.active = true;
+alert.content = "Summer hours not yet available.";
 
 var infoOutput = false;
 
-var alternativeMsg = "<a href=\"https://wwu.campusdish.com/-/media/Local/Higher-Education/GroupC/WesternWashington/Images/Df-4CsrV4AAbGXc.ashx\" target=\"_blank\">Click Here</a> for hours during intersession week.";
+var alternativeMsg = "";
 
 window.onload = function() {
 	windowOnload();
