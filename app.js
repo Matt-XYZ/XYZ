@@ -7,9 +7,9 @@ var openSoon = [];
 
 var alert;
 alert.active = true;
-alert.content = "Summer hours not yet available.";
+alert.content = "Updated with summer hours. All locations closed July 4.";
 
-var infoOutput = false;
+var infoOutput = true;
 
 var alternativeMsg = "";
 
