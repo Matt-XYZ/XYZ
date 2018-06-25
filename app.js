@@ -275,12 +275,12 @@ function favicon(state) {
 	
 	if (state == "happy") {
 		var icons = [
-			"icons/happy(1).ico",
-			"icons/happy(2).ico",
-			"icons/happy(3).ico",
-			"icons/happy(4).ico",
-			"icons/happy(5).ico",
-			"icons/happy(6).ico",
+			"favicons/happy(1).ico",
+			"favicons/happy(2).ico",
+			"favicons/happy(3).ico",
+			"favicons/happy(4).ico",
+			"favicons/happy(5).ico",
+			"favicons/happy(6).ico",
 		];
 		var randomNumber = Math.floor(Math.random()*icons.length);
 
@@ -288,12 +288,12 @@ function favicon(state) {
 	}
 	else if (state == "sad") {
 		var icons = [
-			"icons/sad(1).ico",
-			"icons/sad(2).ico",
-			"icons/sad(3).ico",
-			"icons/sad(4).ico",
-			"icons/sad(5).ico",
-			"icons/sad(6).ico",
+			"favicons/sad(1).ico",
+			"favicons/sad(2).ico",
+			"favicons/sad(3).ico",
+			"favicons/sad(4).ico",
+			"favicons/sad(5).ico",
+			"favicons/sad(6).ico",
 		];
 		var randomNumber = Math.floor(Math.random()*icons.length);
 
