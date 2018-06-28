@@ -7,9 +7,9 @@ var openSoon = [];
 
 var alert;
 alert.active = true;
-alert.content = "Updated with summer hours. All locations closed July 4.";
+alert.content = "I don't feel like maintaining this over the summer sorrynotsorry";
 
-var infoOutput = true;
+var infoOutput = false;
 
 var alternativeMsg = "";
 
