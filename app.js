@@ -7,11 +7,11 @@ var openSoon = [];
 
 var alert;
 alert.active = true;
-alert.content = "I don't feel like maintaining this over the summer sorrynotsorry";
+alert.content = "i don't feel like maintaining this over the summer sorrynotsorry";
 
 var infoOutput = false;
 
-var alternativeMsg = "";
+var alternativeMsg = "<a href=\"https://wwu.campusdish.com/-/media/Local/Higher-Education/GroupC/WesternWashington/Files/Res,-a-,RetailSummer2018Hours_Web.ashx\">just click here instead</a>";
 
 window.onload = function() {
 	windowOnload();
