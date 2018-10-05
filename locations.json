@@ -1,4 +1,4 @@
-var JSON = {
+{
 	"f_commons_brk": {
 		"alias": "f_commons",
 		"display_name": "Fairhaven Commons (Breakfast)",
@@ -638,7 +638,7 @@ var JSON = {
 		"Sunday": {
 			"start": -1,
 			"end": -1
-		},
+		}
 	},
 	"miller_market": {
 		"alias": "miller_market",
@@ -677,31 +677,31 @@ var JSON = {
 		"display_name": "Zoe's Bookside Bagels",
 		"Monday": {
 			"start": 730,
-			"end": 2300,
+			"end": 2300
 		},
 		"Tuesday": {
 			"start": 730,
-			"end": 2300,
+			"end": 2300
 		},
 		"Wednesday": {
 			"start": 730,
-			"end": 2300,
+			"end": 2300
 		},
 		"Thursday": {
 			"start": 730,
-			"end": 2300,
+			"end": 2300
 		},
 		"Friday": {
 			"start": 730,
-			"end": 1700,
+			"end": 1700
 		},
 		"Saturday": {
 			"start": 1100,
-			"end": 1700,
+			"end": 1700
 		},
 		"Sunday": {
 			"start": 1200,
-			"end": 2300,
+			"end": 2300
 		}
 	},
 	"rocks_cafe": {
