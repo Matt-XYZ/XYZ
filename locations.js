@@ -821,7 +821,7 @@ var JSON = {
 		},
 		"Friday": {
 			"start": 730,
-			"end": 1650
+			"end": 1630
 		},
 		"Saturday": {
 			"start": -1,
