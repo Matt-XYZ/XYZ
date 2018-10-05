@@ -4,6 +4,7 @@ var output;
 var openIndex, openSoonIndex;
 var opennow = [];
 var openSoon = [];
+var locations_json;
 
 var alert;
 alert.active = false;
@@ -22,7 +23,23 @@ function convertToURL(text) {
 	return text.replace(exp,"<a href='$1' target='_blank'>$1</a>");
 }
 
+ function loadJSON(callback) {   
+
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', 'locations.json?revision=' + new Date().getTime(), true);
+    xobj.onreadystatechange = function () {
+      if (xobj.readyState == 4 && xobj.status == "200") {
+        callback(xobj.responseText);
+      }
+    };
+    xobj.send(null);  
+ }
+
 function windowOnload(state) {
+    loadJSON(function(response) {
+        locations_json = JSON.parse(response);
+     });
 
 	var returnRate;
 	if (state != "refresh") {
@@ -192,7 +209,7 @@ function convertToTime(value) {
 
 
 function printOpen(wkday) {
-	$.each(JSON, function(k, v) {
+	$.each(locations_json, function(k, v) {
 		if (shortTime >= v[wkday].start && shortTime < v[wkday].end) {
 			opennow.push([v[wkday].end, "<p class=" + v.alias + ">" + v.display_name + "<a id=" + v.alias + " href='#' onclick='return false;' class='imgHover'><sup>(?)</sup></a><span>Closes at " + convertToTime(v[wkday].end) + "</span></p>"]);
 			openIndex++;
