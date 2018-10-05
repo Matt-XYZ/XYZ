@@ -23,12 +23,12 @@ var JSON = {
 			"end": 1100
 		},
 		"Saturday": {
-			"start": -1,
-			"end": -1
+			"start": 900,
+			"end": 1000
 		},
 		"Sunday": {
-			"start": -1,
-			"end": -1
+			"start": 900,
+			"end": 1000
 		}
 	},
 	"r_commons_brk": {
@@ -55,12 +55,12 @@ var JSON = {
 			"end": 1100
 		},
 		"Saturday": {
-			"start": -1,
-			"end": -1
+			"start": 900,
+			"end": 1000
 		},
 		"Sunday": {
-			"start": -1,
-			"end": -1
+			"start": 900,
+			"end": 1000
 		}
 	},
 	"v_commons_brk": {
@@ -87,12 +87,12 @@ var JSON = {
 			"end": 1100
 		},
 		"Saturday": {
-			"start": -1,
-			"end": -1
+			"start": 900,
+			"end": 1000
 		},
 		"Sunday": {
-			"start": -1,
-			"end": -1
+			"start": 900,
+			"end": 1000
 		}
 	},
 	"f_commons_lun": {
@@ -119,12 +119,12 @@ var JSON = {
 			"end": 1330
 		},
 		"Saturday": {
-			"start": -1,
-			"end": -1
+			"start": 1000,
+			"end": 1330
 		},
 		"Sunday": {
-			"start": -1,
-			"end": -1
+			"start": 1000,
+			"end": 1330
 		}
 	},
 	"r_commons_lun": {
@@ -292,31 +292,31 @@ var JSON = {
 		"display_name": "Fairhaven Commons (Dinner)",
 		"Monday": {
 			"start": 1700,
-			"end": 1930
+			"end": 1900
 		},
 		"Tuesday": {
 			"start": 1700,
-			"end": 1930
+			"end": 1900
 		},
 		"Wednesday": {
 			"start": 1700,
-			"end": 1930
+			"end": 1900
 		},
 		"Thursday": {
 			"start": 1700,
-			"end": 1930
+			"end": 1900
 		},
 		"Friday": {
 			"start": 1700,
-			"end": 1830
+			"end": 1900
 		},
 		"Saturday": {
 			"start": 1700,
-			"end": 1830
+			"end": 1900
 		},
 		"Sunday": {
 			"start": 1700,
-			"end": 1830
+			"end": 1900
 		}
 	},
 	"r_commons_din": {
@@ -324,31 +324,31 @@ var JSON = {
 		"display_name": "Ridgeway Commons (Dinner)",
 		"Monday": {
 			"start": 1700,
-			"end": 1930
+			"end": 1900
 		},
 		"Tuesday": {
 			"start": 1700,
-			"end": 1930
+			"end": 1900
 		},
 		"Wednesday": {
 			"start": 1700,
-			"end": 1930
+			"end": 1900
 		},
 		"Thursday": {
 			"start": 1700,
-			"end": 1930
+			"end": 1900
 		},
 		"Friday": {
 			"start": 1700,
-			"end": 1830
+			"end": 1900
 		},
 		"Saturday": {
 			"start": 1700,
-			"end": 1830
+			"end": 1900
 		},
 		"Sunday": {
 			"start": 1700,
-			"end": 1830
+			"end": 1900
 		}
 	},
 	"v_commons_din": {
@@ -356,31 +356,31 @@ var JSON = {
 		"display_name": "Viking Commons (Dinner)",
 		"Monday": {
 			"start": 1700,
-			"end": 1930
+			"end": 1900
 		},
 		"Tuesday": {
 			"start": 1700,
-			"end": 1930
+			"end": 1900
 		},
 		"Wednesday": {
 			"start": 1700,
-			"end": 1930
+			"end": 1900
 		},
 		"Thursday": {
 			"start": 1700,
-			"end": 1930
+			"end": 1900
 		},
 		"Friday": {
 			"start": 1700,
-			"end": 1830
+			"end": 1900
 		},
 		"Saturday": {
 			"start": 1700,
-			"end": 1830
+			"end": 1900
 		},
 		"Sunday": {
 			"start": 1700,
-			"end": 1830
+			"end": 1900
 		}
 	},
 	"f_commons_ltn": {
@@ -516,34 +516,32 @@ var JSON = {
 		"alias": "vu_market",
 		"display_name": "VU Market",
 		"Monday": {
-			"start": 730,
-			"end": 1900
+			"start": 1030,
+			"end": 1930
 		},
 		"Tuesday": {
-			"start": 730,
-			"end": 1900
+			"start": 1030,
+			"end": 1930
 		},
-
 		"Wednesday": {
-			"start": 730,
-			"end": 1900
+			"start": 1030,
+			"end": 1930
 		},
-
 		"Thursday": {
-			"start": 730,
-			"end": 1900
+			"start": 1030,
+			"end": 1930
 		},
 		"Friday": {
-			"start": 730,
-			"end": 1900
+			"start": 1030,
+			"end": 1930
 		},
 		"Saturday": {
-			"start": 1100,
-			"end": 1900
+			"start": -1,
+			"end": -1
 		},
 		"Sunday": {
-			"start": 1100,
-			"end": 1900
+			"start": -1,
+			"end": -1
 		}
 	},
 	"subway_vu": {
@@ -557,12 +555,10 @@ var JSON = {
 			"start": 730,
 			"end": 1900
 		},
-
 		"Wednesday": {
 			"start": 730,
 			"end": 1900
 		},
-
 		"Thursday": {
 			"start": 730,
 			"end": 1900
@@ -584,25 +580,23 @@ var JSON = {
 		"alias": "vu_pexpress",
 		"display_name": "Panda Express @ VU",
 		"Monday": {
-			"start": 730,
+			"start": 1030,
 			"end": 1900
 		},
 		"Tuesday": {
-			"start": 730,
+			"start": 1030,
 			"end": 1900
 		},
-
 		"Wednesday": {
-			"start": 730,
+			"start": 1030,
 			"end": 1900
 		},
-
 		"Thursday": {
-			"start": 730,
+			"start": 1030,
 			"end": 1900
 		},
 		"Friday": {
-			"start": 730,
+			"start": 1030,
 			"end": 1900
 		},
 		"Saturday": {
@@ -828,38 +822,6 @@ var JSON = {
 		"Friday": {
 			"start": 730,
 			"end": 1650
-		},
-		"Saturday": {
-			"start": -1,
-			"end": -1
-		},
-		"Sunday": {
-			"start": -1,
-			"end": -1
-		}
-	},
-	"topios_atrium": {
-		"alias": "topios_atrium",
-		"display_name": "Topio's @ The Atrium",
-		"Monday": {
-			"start": 1030,
-			"end": 1700
-		},
-		"Tuesday": {
-			"start": 1030,
-			"end": 1700
-		},
-		"Wednesday": {
-			"start": 1030,
-			"end": 1700
-		},
-		"Thursday": {
-			"start": 1030,
-			"end": 1700
-		},
-		"Friday": {
-			"start": 1030,
-			"end": 1430
 		},
 		"Saturday": {
 			"start": -1,

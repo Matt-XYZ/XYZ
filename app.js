@@ -6,12 +6,12 @@ var opennow = [];
 var openSoon = [];
 
 var alert;
-alert.active = true;
-alert.content = "i don't feel like maintaining this over the summer sorrynotsorry";
+alert.active = false;
+alert.content = "";
 
-var infoOutput = false;
+var infoOutput = true;
 
-var alternativeMsg = "<a href=\"https://wwu.campusdish.com/-/media/Local/Higher-Education/GroupC/WesternWashington/Files/Res,-a-,RetailSummer2018Hours_Web.ashx\">just click here instead</a>";
+var alternativeMsg = "";
 
 window.onload = function() {
 	windowOnload();
@@ -23,8 +23,6 @@ function convertToURL(text) {
 }
 
 function windowOnload(state) {
-
-	//$("#debug").text(JSON.atrium_subway.Monday.start);
 
 	var returnRate;
 	if (state != "refresh") {
