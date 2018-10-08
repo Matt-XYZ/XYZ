@@ -1,4 +1,4 @@
-@font-face {
+ @font-face {
     font-family: "Coolvetica";
     src: url("coolvetica/coolvetica rg.ttf");
 }
@@ -92,29 +92,31 @@ h1 {
     display: inline-block;
     text-align: center;
 }
-
 img#headerImg {
     width: 430px;
     height: auto;
     margin-top: 20px;
 }
-
 h3#timeDisplay {
     margin-top: 1em;
     padding-top: 0;
 }
-
 span {
 	display: block;
 	font-size: 0.6em;
-	padding-top: 0.1em;
+    padding-top: 0.1em;
 }
 span.special {
     font-weight: bold !important;
     font-size: 0.75em !important;
     margin: 1em;
 }
-
+span.closes-soon {
+    font-weight: bold;
+}
+i.fa-exclamation-triangle {
+    color: orangered;
+}
 span#refreshIcon {
     display: inline;
     font-size: 1em;
@@ -132,7 +134,7 @@ span#refreshIcon {
     background-color: #0083d6;
     border-color: #0083d6;
 }
-#output, #output2 {
+ #output, #output2 {
     display: inline-block;
     vertical-align: top;
     width: 35%;
@@ -144,7 +146,7 @@ span#refreshIcon {
     background-color: rgba(70, 219, 70, 0.5);
     border: 1px solid rgba(0, 255, 0, 0.2);
     border-radius: 0.4em;
-}
+} 
 #output-inner, #output2-inner {
     display: none;
 }
@@ -246,4 +248,4 @@ span#refreshIcon {
     div#body {
         font-size: 1.5em !important;
     }
-}
+} 

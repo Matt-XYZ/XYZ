@@ -81,8 +81,7 @@ function windowOnload(state) {
 			}
 
 			if (openSoon.length < 1) {
-				$("#output2-inner").append("<p><i>Nothing in the next 2 hours</i></p>"
-				+ "<span>Find this site useful? Consider using my Uber Eats code:</span><span class=\"special\">eats-mattj12786ui</span>");
+				$("#output2-inner").append("<p><i>Nothing in the next 2 hours</i></p>");
 			}
 		}
 		else {
@@ -211,7 +210,14 @@ function convertToTime(value) {
 function printOpen(wkday) {
 	$.each(locations_json, function(k, v) {
 		if (shortTime >= v[wkday].start && shortTime < v[wkday].end) {
-			opennow.push([v[wkday].end, "<p class=" + v.alias + ">" + v.display_name + "<a id=" + v.alias + " href='#' onclick='return false;' class='imgHover'><sup>(?)</sup></a><span>Closes at " + convertToTime(v[wkday].end) + "</span></p>"]);
+			// if location closes within next 30 mins (use 70 because shortTime rolls over at 100, not 60)
+			if (v[wkday].end - shortTime <= 70) {
+				opennow.push([v[wkday].end, "<p class=\"location__open " + v.alias + "\">" + v.display_name + "<a id=" + v.alias + " href='#' onclick='return false;' class='imgHover'><sup>(?)</sup></a><span class=\"closes-soon\"><i class=\"fa fa-exclamation-triangle\"></i>&nbsp;Closes soon: " + convertToTime(v[wkday].end) + "</span></p>"]);
+			}
+			// open locations that aren't closing in next 30 mins
+			else {
+				opennow.push([v[wkday].end, "<p class=" + v.alias + ">" + v.display_name + "<a id=" + v.alias + " href='#' onclick='return false;' class='imgHover'><sup>(?)</sup></a><span>Closes at " + convertToTime(v[wkday].end) + "</span></p>"]);
+			}
 			openIndex++;
 		}
 
