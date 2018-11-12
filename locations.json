@@ -832,6 +832,38 @@
 			"end": -1
 		}
 	},
+	"oath_pizza": {
+		"alias": "oath_pizza",
+		"display_name": "Oath Pizza",
+		"Monday": {
+			"start": 1100,
+			"end": 1700
+		},
+		"Tuesday": {
+			"start": 1100,
+			"end": 1700
+		},
+		"Wednesday": {
+			"start": 1100,
+			"end": 1700
+		},
+		"Thursday": {
+			"start": 1100,
+			"end": 1700
+		},
+		"Friday": {
+			"start": 1100,
+			"end": 1430
+		},
+		"Saturday": {
+			"start": -1,
+			"end": -1
+		},
+		"Sunday": {
+			"start": -1,
+			"end": -1
+		}
+	},
 	"subway_atrium": {
 		"alias": "subway_atrium",
 		"display_name": "Subway @ The Atrium",

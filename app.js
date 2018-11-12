@@ -23,7 +23,7 @@ function convertToURL(text) {
 	return text.replace(exp,"<a href='$1' target='_blank'>$1</a>");
 }
 
- function loadJSON(callback) {   
+ function loadJSON(callback) {
 
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
@@ -33,7 +33,7 @@ function convertToURL(text) {
         callback(xobj.responseText);
       }
     };
-    xobj.send(null);  
+    xobj.send(null);
  }
 
 function windowOnload(state) {
@@ -70,7 +70,7 @@ function windowOnload(state) {
 	setTimeout(function() {
 		if (infoOutput) {
 			printOpen(wkday);
-		
+
 
 			if (opennow.length < 1) {
 				$("#output-inner").append("<p><i>Nothing right now</i></p>");
@@ -89,13 +89,13 @@ function windowOnload(state) {
 		}
 
 		$("#output-inner, #output2-inner").slideToggle();
-		
+
 		// display alert if active
 		if(alert.active && $("div.alert-info").css("display") == "none") {
 			$("div.alert-info").html(alert.content);
 			$("div.alert-info").slideToggle();
 		}
-		
+
 		// remove disabled class from refresh button if this is a page load
 		if (state != "refresh") $("#refresh-link").removeClass("disabled");
 	}, returnRate);
@@ -280,7 +280,7 @@ function getMapEmbed(location) {
 	else if (location == "rocks_cafe") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.8129092870122!2d-122.4893911703614!3d48.731741097582834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQzJzU0LjMiTiAxMjLCsDI5JzE5LjQiVw!5e0!3m2!1sen!2sus!4v1518138528635";
 	else if (location == "bt_station") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.8503675283262!2d-122.48683921055277!3d48.730309741303124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQzJzQ5LjEiTiAxMjLCsDI5JzA4LjciVw!5e0!3m2!1sen!2sus!4v1518138755478";
 	else if (location == "the_haven") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d657.9717361183431!2d-122.48775317073753!3d48.72675188336555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQzJzM2LjMiTiAxMjLCsDI5JzEzLjkiVw!5e0!3m2!1sen!2sus!4v1518139126220";
-	else if (location == "starbucks_atrium" || location == "topios_atrium" || location == "subway_atrium" || location == "pod_market") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.7594303193364!2d-122.48678063718938!3d48.73378458431952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzAxLjYiTiAxMjLCsDI5JzA4LjkiVw!5e0!3m2!1sen!2sus!4v1518137780549";
+	else if (location == "starbucks_atrium" || location == "oath_pizza" || location == "topios_atrium" || location == "subway_atrium" || location == "pod_market") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.7594303193364!2d-122.48678063718938!3d48.73378458431952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzAxLjYiTiAxMjLCsDI5JzA4LjkiVw!5e0!3m2!1sen!2sus!4v1518137780549";
 	else if (location == "freshens") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.7002519643306!2d-122.48697793225266!3d48.73604577601202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzA5LjgiTiAxMjLCsDI5JzA5LjIiVw!5e0!3m2!1sen!2sus!4v1518137908653";
 	else if (location == "f_commons") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.8503675283262!2d-122.48683921055277!3d48.730309741303124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQzJzQ5LjEiTiAxMjLCsDI5JzA4LjciVw!5e0!3m2!1sen!2sus!4v1518138755478";
 	else if (location == "r_commons") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d657.875052822489!2d-122.4906651707535!3d48.73414088323561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzAyLjkiTiAxMjLCsDI5JzI0LjQiVw!5e0!3m2!1sen!2sus!4v1518139499053"
@@ -293,7 +293,7 @@ function favicon(state) {
     var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/x-icon';
     link.rel = 'shortcut icon';
-	
+
 	if (state == "happy") {
 		var icons = [
 			"favicons/happy(1).ico",
@@ -320,7 +320,7 @@ function favicon(state) {
 
 		icon = icons[randomNumber];
 	}
-	
+
     link.href = icon;
     document.getElementsByTagName('head')[0].appendChild(link);
 };
