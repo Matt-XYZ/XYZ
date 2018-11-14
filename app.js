@@ -7,8 +7,8 @@ var openSoon = [];
 var locations_json;
 
 var alert;
-alert.active = true;
-alert.content = "Veterans Day hours may vary.";
+alert.active = false;
+alert.content = "";
 
 var infoOutput = true;
 
