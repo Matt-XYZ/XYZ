@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="bootstrap.min.css" />
+		<style type="text/css">
+			html {
+				width: 100%;
+				height: 100%;
+			}
+			body {
+				margin: 20px;
+			}
+			form {
+				height: 100%;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			input[type="email"] {
+				width: 20em;
+			}
+			textarea {
+				resize: none;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>feedback</h1>
+		<form action="https://formspree.io/mattj456@gmail.com" method="POST">
+			<div class="form-group">
+		    	<input type="email" name="email" class="form-control" placeholder="email (optional)" />
+		  	</div>
+			<div class="form-group">
+   				<textarea name="comments" class="form-control" rows="5" placeholder="more info (required)" required></textarea>
+ 			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</div>
+		</form>
+	</body>
+</html>
