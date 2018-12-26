@@ -5,6 +5,7 @@ var openIndex, openSoonIndex;
 var opennow = [];
 var openSoon = [];
 var locations_json;
+var debug;
 
 var alert;
 alert.active = false;
@@ -18,25 +19,9 @@ window.onload = function() {
 	windowOnload();
 }
 
-function convertToURL(text) {
-	var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
-	return text.replace(exp,"<a href='$1' target='_blank'>$1</a>");
-}
-
- function loadJSON(callback) {
-
-    var xobj = new XMLHttpRequest();
-    xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'locations.json?revision=' + new Date().getTime(), true);
-    xobj.onreadystatechange = function () {
-      if (xobj.readyState == 4 && xobj.status == "200") {
-        callback(xobj.responseText);
-      }
-    };
-    xobj.send(null);
- }
-
 function windowOnload(state) {
+	if (getAllUrlParams().mode == "debug") debug = true;
+
     loadJSON(function(response) {
         locations_json = JSON.parse(response);
      });
@@ -68,7 +53,7 @@ function windowOnload(state) {
 
 
 	setTimeout(function() {
-		if (infoOutput) {
+		if (infoOutput || debug) {
 			printOpen(wkday);
 
 
@@ -99,6 +84,22 @@ function windowOnload(state) {
 		// remove disabled class from refresh button if this is a page load
 		if (state != "refresh") $("#refresh-link").removeClass("disabled");
 	}, returnRate);
+
+	// report form popup
+	$("#report").click(function() {
+		$("#modalImg").attr("src", "form.html");
+		$("#modalDiv").css("display", "block");
+	});
+
+	// modal closing mechanics
+	$("#close").click(function() {
+		$("#modalImg").attr("src", "");
+		$("#modalDiv").css("display", "none");
+	});
+	$("#modalDiv").click(function(event) {
+		$("#modalImg").attr("src", "");
+		$("#modalDiv").css("display", "none");
+	});
 } // end windowOnload
 
 
@@ -115,39 +116,6 @@ function refresh() {
 	$("#refresh-link").addClass("disabled");
 }
 
-// add a leading zero to a number when needed
-function pad(num) {
-	var s = num+"";
-	while (s.length < 2) s = "0" + s;
-	return s;
-}
-
-// add leading zero to 3 digit number
-function fourpad(num) {
-	var s = num+"";
-	if (s.length == 3) s = "0" + s;
-	return s;
-}
-
-// convert 24hr hours to 12hr
-function toTwelveHr(hr) {
-	if (hr > 12) {
-		return hr - 12;
-	}
-	else if (hr === 0) {
-	   return 12;
-	}
-	else return hr;
-}
-
-// determine AM or PM value of a time
-function AMPM(hr) {
-	if (hr <= 11 || hr == 24)
-		return "AM";
-	else {
-		return "PM";
-	}
-}
 
 function calcTime(city, offset) {
     // create Date object for current location
@@ -165,15 +133,15 @@ function calcTime(city, offset) {
 
 	fullHour = pad(nd.getHours());
 
-	var dayWeek = [[0, "Sunday"], [1, "Monday"], [2, "Tuesday"], [3, "Wednesday"], [4, "Thursday"], [5, "Friday"], [6, "Saturday"]];
+	var dayWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 	shortTime = Number(fullHour.toString() + pad(nd.getMinutes()).toString());
 
-	wkday = dayWeek[nd.getDay()][1];
+	wkday = dayWeek[nd.getDay()];
 
 	var displayWkDay = wkday;
 
-	if (getAllUrlParams().mode == "debug") {
+	if (debug) {
         wkday = prompt("Enter weekday");
 		displayWkDay = wkday;
 		shortTime = prompt("Enter time");
@@ -183,29 +151,6 @@ function calcTime(city, offset) {
     // return time as a string
     return displayWkDay + ", " +  toTwelveHr(nd.getHours()) + ":" + pad(nd.getMinutes()) + " " + AMPM(fullHour);
 }
-
-// Add an amount of minutes to a number so that it rolls over at 60, rather than 100
-function addTime(current, min) {
-	var firstTwo = Number(fourpad(current.toString()).split("")[0] + fourpad(current.toString()).split("")[1]);
-	var lastTwo = Number(fourpad(current.toString()).split("")[2] + fourpad(current.toString()).split("")[3]);
-
-	var d = new Date("Sun Jan 1 2000 " + firstTwo + ":" + lastTwo + ":00");
-
-	d.setMinutes(d.getMinutes() + min);
-
-	return Number((d.getHours().toString()) + (pad(d.getMinutes()).toString()));
-}
-
-// convert a number value to a formatted string for display
-function convertToTime(value) {
-	var firstTwo = Number(fourpad(value.toString()).split("")[0] + fourpad(value.toString()).split("")[1]);
-	var lastTwo = Number(fourpad(value.toString()).split("")[2] + fourpad(value.toString()).split("")[3]);
-
-	var d = new Date("Sun Jan 1 2000 " + firstTwo + ":" + lastTwo + ":00");
-
-	return (toTwelveHr(d.getHours())).toString() + ":" + pad(lastTwo.toString()) + " " + AMPM(firstTwo);
-}
-
 
 function printOpen(wkday) {
 	$.each(locations_json, function(k, v) {
@@ -239,7 +184,6 @@ function printOpen(wkday) {
 	for (var index = 0; index < openSoon.length; index++) {
 		// sort the array of Opening Soon locations
 		openSoon.sort();
-
 		// append current item to the HTML output2
 		$("#output2-inner").append(openSoon[index][1]);
 	}
@@ -250,20 +194,9 @@ function printOpen(wkday) {
 
 	$(".imgHover").each(function(index) {
 		$(this).click(function() {
-			$("#modalImg").attr("src", getMapEmbed($(this).attr("id")));
+			$("#modalImg").attr("src", getEmbed($(this).attr("id")));
 			$("#modalDiv").css("display", "block");
 		});
-	});
-
-	// When the user clicks on <span> (x), close the modal
-	$("#close").click(function() {
-		$("#modalImg").attr("src", "");
-		$("#modalDiv").css("display", "none");
-	});
-
-	$("#modalDiv").click(function(event) {
-		$("#modalImg").attr("src", "");
-		$("#modalDiv").css("display", "none");
 	});
 
 	$(document).ready(function(){
@@ -272,7 +205,7 @@ function printOpen(wkday) {
 
 }
 
-function getMapEmbed(location) {
+function getEmbed(location) {
 	if (location == "vu_cafe" || location == "underground_coffeehouse") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.6262630669914!2d-122.48757834170385!3d48.7388727637146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzE5LjkiTiAxMjLCsDI5JzExLjMiVw!5e0!3m2!1sen!2sus!4v1518138063732";
 	else if (location == "subway_vu" || location == "pexpress_vu" || location == "vu_market") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.6227558950666!2d-122.48739034170386!3d48.73900676370991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzIwLjQiTiAxMjLCsDI5JzEwLjciVw!5e0!3m2!1sen!2sus!4v1518138286088";
 	else if (location == "miller_market") return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1315.6836593040343!2d-122.48610934170391!3d48.736679763791656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDQ0JzEyLjAiTiAxMjLCsDI5JzA2LjEiVw!5e0!3m2!1sen!2sus!4v1518137244822";
@@ -324,65 +257,3 @@ function favicon(state) {
     link.href = icon;
     document.getElementsByTagName('head')[0].appendChild(link);
 };
-
-function getAllUrlParams(url) {
-
-  // get query string from url (optional) or window
-  var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
-
-  // we'll store the parameters here
-  var obj = {};
-
-  // if query string exists
-  if (queryString) {
-
-	// stuff after # is not part of query string, so get rid of it
-	queryString = queryString.split('#')[0];
-
-	// split our query string into its component parts
-	var arr = queryString.split('&');
-
-	for (var i=0; i<arr.length; i++) {
-	  // separate the keys and the values
-	  var a = arr[i].split('=');
-
-	  // in case params look like: list[]=thing1&list[]=thing2
-	  var paramNum = undefined;
-	  var paramName = a[0].replace(/\[\d*\]/, function(v) {
-		paramNum = v.slice(1,-1);
-		return '';
-	  });
-
-	  // set parameter value (use 'true' if empty)
-	  var paramValue = typeof(a[1])==='undefined' ? true : a[1];
-
-	  // (optional) keep case consistent
-	  //paramName = paramName.toLowerCase();
-	  //paramValue = paramValue.toLowerCase();
-
-	  // if parameter name already exists
-	  if (obj[paramName]) {
-		// convert value to array (if still string)
-		if (typeof obj[paramName] === 'string') {
-		  obj[paramName] = [obj[paramName]];
-		}
-		// if no array index number specified...
-		if (typeof paramNum === 'undefined') {
-		  // put the value on the end of the array
-		  obj[paramName].push(paramValue);
-		}
-		// if array index number specified...
-		else {
-		  // put the value at that index number
-		  obj[paramName][paramNum] = paramValue;
-		}
-	  }
-	  // if param name doesn't exist yet, set it
-	  else {
-		obj[paramName] = paramValue;
-	  }
-	}
-  }
-
-  return obj;
-}
