@@ -11,9 +11,9 @@ var alert;
 alert.active = false;
 alert.content = "";
 
-var infoOutput = false;
+var infoOutput = true;
 
-var alternativeMsg = "<a href=\"https://wwu.campusdish.com/-/media/Local/Higher-Education/GroupC/WesternWashington/Files/Win_Intersession2016-17WEB10267.ashx\">Intersession Hours</a>";
+var alternativeMsg = "";
 
 window.onload = function() {
 	windowOnload();
