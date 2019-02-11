@@ -8,8 +8,8 @@ var locations_json;
 var debug;
 
 var alert;
-alert.active = false;
-alert.content = "";
+alert.active = true;
+alert.content = "Hours may be affected by snow closures.";
 
 var infoOutput = true;
 
