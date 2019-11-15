@@ -8,10 +8,10 @@ var locations_json;
 var debug;
 
 var alert;
-alert.active = false;
-alert.content = "";
+alert.active = true;
+alert.content = "This application is currently disabled.";
 
-var infoOutput = true;
+var infoOutput = false;
 
 var alternativeMsg = "";
 
@@ -46,7 +46,7 @@ function windowOnload(state) {
 	openSoonIndex = 0;
 
 	// use +7 during DST, +8 otherwise
-	$("#timeDisplay").html(calcTime("Bellingham", "+7"));
+	$("#timeDisplay").html(calcTime("Bellingham", "+8"));
 
 	$("#output").html("<h3>Open Locations</h3><div id='output-inner'></div>");
 	$("#output2").html("<h3>Opening Soon</h3><div id='output2-inner'></div>");
